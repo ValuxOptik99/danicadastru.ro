@@ -1,14 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 
-// Coordinates projected onto viewBox 800x554 (equirectangular projection with
-// cos(lat) correction for Romania, preserving the real geographic aspect ratio).
-// City coordinates are derived from their real geographic lon/lat values.
 const MAP_VIEWBOX = { width: 800, height: 554 };
 
 const ROMANIA_PATH =
@@ -16,19 +14,55 @@ const ROMANIA_PATH =
 
 type LabelAnchor = "right" | "left" | "top" | "bottom";
 
-interface City {
+interface MajorCity {
   name: string;
   x: number;
   y: number;
   anchor: LabelAnchor;
 }
 
-const majorCities: City[] = [
-  { name: "Cluj-Napoca", x: 297.8, y: 187.9, anchor: "top" },
-  { name: "Iași",        x: 609.7, y: 145.7, anchor: "right" },
-  { name: "Timișoara",   x: 107.8, y: 299.4, anchor: "left" },
+interface SecondaryCity {
+  name: string;
+  x: number;
+  y: number;
+}
+
+const majorCities: MajorCity[] = [
+  { name: "Cluj-Napoca", x: 297.8, y: 187.9, anchor: "top"    },
+  { name: "Iași",        x: 609.7, y: 145.7, anchor: "right"  },
+  { name: "Timișoara",   x: 107.8, y: 299.4, anchor: "left"   },
   { name: "București",   x: 492.8, y: 443.5, anchor: "bottom" },
-  { name: "Constanța",   x: 692.0, y: 471.1, anchor: "right" },
+  { name: "Constanța",   x: 692.0, y: 471.1, anchor: "right"  },
+  { name: "Brașov",      x: 453.4, y: 309.3, anchor: "right"  },
+  { name: "Craiova",     x: 311.2, y: 454.0, anchor: "left"   },
+  { name: "Galați",      x: 646.0, y: 333.5, anchor: "right"  },
+  { name: "Oradea",      x: 163.7, y: 155.1, anchor: "left"   },
+  { name: "Sibiu",       x: 339.4, y: 294.0, anchor: "left"   },
+  { name: "Baia Mare",   x: 294.3, y: 91.1,  anchor: "top"    },
+  { name: "Suceava",     x: 504.8, y: 92.0,  anchor: "top"    },
+];
+
+const secondaryCities: SecondaryCity[] = [
+  { name: "Arad",                  x: 116.3, y: 251.6 },
+  { name: "Târgu Mureș",           x: 371.6, y: 212.5 },
+  { name: "Bacău",                 x: 556.3, y: 210.2 },
+  { name: "Ploiești",              x: 486.0, y: 388.3 },
+  { name: "Pitești",               x: 395.8, y: 396.6 },
+  { name: "Drobeta-Turnu Severin", x: 221.9, y: 421.8 },
+  { name: "Tulcea",                x: 705.0, y: 362.8 },
+  { name: "Zalău",                 x: 236.0, y: 145.0 },
+  { name: "Bistrița",              x: 367.0, y: 152.0 },
+  { name: "Piatra Neamț",          x: 513.0, y: 175.0 },
+  { name: "Vaslui",                x: 619.0, y: 206.0 },
+  { name: "Focșani",               x: 577.0, y: 310.0 },
+  { name: "Buzău",                 x: 548.0, y: 371.0 },
+  { name: "Alba Iulia",            x: 294.0, y: 269.0 },
+  { name: "Deva",                  x: 242.0, y: 291.0 },
+  { name: "Miercurea Ciuc",        x: 468.0, y: 237.0 },
+  { name: "Râmnicu Vâlcea",        x: 357.0, y: 377.0 },
+  { name: "Reșița",                x: 163.0, y: 355.0 },
+  { name: "Alexandria",            x: 432.0, y: 501.0 },
+  { name: "Giurgiu",               x: 482.0, y: 510.0 },
 ];
 
 const LABEL_OFFSETS: Record<LabelAnchor, { dx: number; dy: number; transform: string }> = {
@@ -39,6 +73,8 @@ const LABEL_OFFSETS: Record<LabelAnchor, { dx: number; dy: number; transform: st
 };
 
 export function LocationsTeaserSection() {
+  const [hoveredCity, setHoveredCity] = useState<SecondaryCity | null>(null);
+
   return (
     <section className="section-padding bg-bg-muted">
       <div className="container mx-auto px-4 lg:px-6">
@@ -53,7 +89,7 @@ export function LocationsTeaserSection() {
             viewBox={`0 0 ${MAP_VIEWBOX.width} ${MAP_VIEWBOX.height}`}
             className="h-auto w-full"
             xmlns="http://www.w3.org/2000/svg"
-            aria-label="Harta României cu orașele principale unde oferim servicii"
+            aria-label="Harta României cu orașele unde oferim servicii"
             role="img"
           >
             <defs>
@@ -76,6 +112,22 @@ export function LocationsTeaserSection() {
               strokeLinejoin="round"
             />
 
+            {/* Secondary city pins — behind major cities */}
+            {secondaryCities.map((city) => (
+              <g
+                key={city.name}
+                className="cursor-pointer"
+                onMouseEnter={() => setHoveredCity(city)}
+                onMouseLeave={() => setHoveredCity(null)}
+              >
+                <circle cx={city.x} cy={city.y} r="14" fill="transparent" />
+                <circle cx={city.x} cy={city.y} r="8" fill="#22D3EE" fillOpacity="0.2" />
+                <circle cx={city.x} cy={city.y} r="4" fill="#22D3EE" />
+                <circle cx={city.x} cy={city.y} r="2" fill="#FFFFFF" />
+              </g>
+            ))}
+
+            {/* Major city pins — on top */}
             {majorCities.map((city, i) => (
               <g key={city.name}>
                 <motion.circle
@@ -85,11 +137,7 @@ export function LocationsTeaserSection() {
                   fill="#22D3EE"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: [0.4, 0, 0.4] }}
-                  transition={{
-                    duration: 2.4,
-                    repeat: Infinity,
-                    delay: i * 0.3,
-                  }}
+                  transition={{ duration: 2.4, repeat: Infinity, delay: i * 0.3 }}
                   style={{ transformOrigin: `${city.x}px ${city.y}px` }}
                 />
                 <motion.circle
@@ -101,12 +149,7 @@ export function LocationsTeaserSection() {
                   strokeWidth="1.5"
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{ opacity: [0.6, 0], scale: [1, 2.2] }}
-                  transition={{
-                    duration: 2.4,
-                    repeat: Infinity,
-                    delay: i * 0.3,
-                    ease: "easeOut",
-                  }}
+                  transition={{ duration: 2.4, repeat: Infinity, delay: i * 0.3, ease: "easeOut" }}
                   style={{ transformOrigin: `${city.x}px ${city.y}px` }}
                 />
                 <circle cx={city.x} cy={city.y} r="6" fill="#22D3EE" />
@@ -115,12 +158,13 @@ export function LocationsTeaserSection() {
             ))}
           </svg>
 
+          {/* Labels overlay */}
           <div className="pointer-events-none absolute inset-0">
+            {/* Major city labels — always visible */}
             {majorCities.map((city, i) => {
               const offset = LABEL_OFFSETS[city.anchor];
               const leftPct = ((city.x + offset.dx) / MAP_VIEWBOX.width) * 100;
               const topPct = ((city.y + offset.dy) / MAP_VIEWBOX.height) * 100;
-
               return (
                 <motion.div
                   key={city.name}
@@ -129,19 +173,36 @@ export function LocationsTeaserSection() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.15 + i * 0.08 }}
                   className="absolute"
-                  style={{
-                    left: `${leftPct}%`,
-                    top: `${topPct}%`,
-                    transform: offset.transform,
-                  }}
+                  style={{ left: `${leftPct}%`, top: `${topPct}%`, transform: offset.transform }}
                 >
-                  <div className="flex items-center gap-1 whitespace-nowrap rounded-full bg-navy-900/95 px-2.5 py-1 text-[10px] font-semibold text-white shadow-lg backdrop-blur-sm sm:text-xs sm:px-3 sm:py-1.5">
+                  <div className="flex items-center gap-1 whitespace-nowrap rounded-full bg-navy-900/95 px-2.5 py-1 text-[10px] font-semibold text-white shadow-lg backdrop-blur-sm sm:px-3 sm:py-1.5 sm:text-xs">
                     <MapPin className="h-2.5 w-2.5 text-brand-cyan sm:h-3 sm:w-3" />
                     {city.name}
                   </div>
                 </motion.div>
               );
             })}
+
+            {/* Secondary city hover tooltip */}
+            {hoveredCity && (
+              <motion.div
+                key={hoveredCity.name}
+                initial={{ opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.15 }}
+                className="absolute"
+                style={{
+                  left: `${(hoveredCity.x / MAP_VIEWBOX.width) * 100}%`,
+                  top: `${((hoveredCity.y - 14) / MAP_VIEWBOX.height) * 100}%`,
+                  transform: "translate(-50%, -100%)",
+                }}
+              >
+                <div className="flex items-center gap-1 whitespace-nowrap rounded-full bg-navy-900 px-2.5 py-1 text-[10px] font-semibold text-white shadow-lg">
+                  <MapPin className="h-2.5 w-2.5 text-brand-cyan" />
+                  {hoveredCity.name}
+                </div>
+              </motion.div>
+            )}
           </div>
         </div>
 

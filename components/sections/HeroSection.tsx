@@ -17,12 +17,16 @@ export function HeroSection() {
           className="relative z-10 flex flex-col justify-center px-6 py-20 lg:px-12 lg:py-28 xl:px-20"
         >
           {/* Badge */}
-          <div className="inline-flex w-fit items-center gap-2 rounded-full border border-brand-cyan/30 bg-brand-cyan/10 px-3 py-1.5">
+          <motion.div
+            animate={{ y: [0, -8, 0] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+            className="inline-flex w-fit items-center gap-2 rounded-full border border-brand-cyan/30 bg-brand-cyan/10 px-3 py-1.5"
+          >
             <ShieldCheck className="h-3.5 w-3.5 text-brand-cyan" />
             <span className="text-xs font-semibold uppercase tracking-widest text-brand-cyan">
-              Autoritate Tehnică
+              Autorizat ANCPI
             </span>
-          </div>
+          </motion.div>
 
           {/* H1 */}
           <h1
