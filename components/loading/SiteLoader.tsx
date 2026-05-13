@@ -8,7 +8,6 @@ const STORAGE_KEY = "dani-loader-shown";
 const REVEAL_MS = 1800;
 const HOLD_MS = 400;
 const FADE_MS = 600;
-const TOTAL_MS = REVEAL_MS + HOLD_MS + FADE_MS;
 
 export function SiteLoader() {
   const [visible, setVisible] = useState(false);
