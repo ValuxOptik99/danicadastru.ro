@@ -61,7 +61,7 @@ export function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.9, delay: 0.15 }}
-          className="relative min-h-[500px] lg:min-h-[860px]"
+          className="relative min-h-[500px] lg:min-h-0 lg:aspect-[1122/1260]"
         >
           <Image
             src="/images/hero.png"

@@ -5,6 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { WhatsAppButton } from "@/components/shared/WhatsAppButton";
+import { SiteLoader } from "@/components/loading/SiteLoader";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -117,11 +118,17 @@ export default function RootLayout({
     <html lang="ro" className={inter.variable}>
       <head>
         <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{if(!sessionStorage.getItem('dani-loader-shown')){document.documentElement.style.background='#0A0E27';}}catch(e){}})();`,
+          }}
+        />
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body className={`${inter.className} antialiased`}>
+        <SiteLoader />
         <Navbar />
         <main>{children}</main>
         <Footer />
