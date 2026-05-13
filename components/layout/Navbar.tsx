@@ -49,10 +49,10 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <Image
-              src="/logo/VDlogo.png"
+              src="/logo/logo_dani.png"
               alt="Vibe Design Logo"
-              width={1001}
-              height={751}
+              width={1254}
+              height={1254}
               className="h-12 w-auto"
               priority
             />
@@ -170,7 +170,7 @@ export function Navbar() {
           <div className="absolute right-0 top-0 bottom-0 w-full max-w-xs bg-white shadow-2xl flex flex-col">
             <div className="flex items-center justify-between p-4 border-b border-[#E5E9F2]">
               <Link href="/" className="flex items-center gap-2" onClick={() => setMobileOpen(false)}>
-                <Image src="/logo/VDlogo.png" alt="Vibe Design" width={1001} height={751} className="h-9 w-auto" />
+                <Image src="/logo/logo_dani.png" alt="Vibe Design" width={1254} height={1254} className="h-9 w-auto" />
                 <span className="font-bold text-navy-ink">Vibe Design</span>
               </Link>
               <button

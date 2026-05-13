@@ -13,10 +13,10 @@ export function Footer() {
           <div>
             <Link href="/" className="flex items-center gap-3 mb-4">
               <Image
-                src="/logo/VDlogo.png"
+                src="/logo/logo_dani.png"
                 alt="Vibe Design"
-                width={1001}
-                height={751}
+                width={1254}
+                height={1254}
                 className="h-10 w-auto brightness-0 invert opacity-90"
               />
               <span className="text-lg font-bold text-white">Vibe Design</span>
