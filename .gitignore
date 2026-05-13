@@ -1,0 +1,37 @@
+# dependencies
+node_modules/
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# env files
+.env
+.env*.local
+
+# debug
+npm-debug.log*
+
+# misc
+.DS_Store
+*.pem
+tsconfig.tsbuildinfo
+
+# claude
+.claude/
+
+# project reference files (not part of the codebase)
+*.tar.gz
+vibe-design-website-prompt.md
+VDG.md
+screen.png
+screen1.png
+screen3.png
+2.png
+anpc-sal.png
+anpc-sol.png
+"visual direction.jpeg"
+VDlogo.png

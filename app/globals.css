@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Primary – Dark Navy */
+  --navy-950: #0A0E27;
+  --navy-900: #0F1535;
+  --navy-800: #1A2151;
+  --navy-700: #1E2A6B;
+  --navy-ink: #0B1437;
+
+  /* Brand Gradient */
+  --brand-blue: #2563EB;
+  --brand-cyan: #22D3EE;
+  --brand-violet: #8B5CF6;
+  --brand-magenta: #D946EF;
+  --brand-pink: #EC4899;
+
+  /* Neutrals */
+  --bg: #FFFFFF;
+  --bg-muted: #F5F7FB;
+  --border: #E5E9F2;
+  --text-muted: #6B7280;
+
+  /* Semantic */
+  --success: #10B981;
+
+  --radius: 0.75rem;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--navy-ink);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer utilities {
+  .gradient-brand {
+    background: linear-gradient(135deg, #2563EB 0%, #22D3EE 35%, #8B5CF6 70%, #EC4899 100%);
+  }
+
+  .gradient-cta {
+    background: linear-gradient(90deg, #D946EF 0%, #EC4899 100%);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #2563EB 0%, #22D3EE 35%, #8B5CF6 70%, #EC4899 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  }
+}
+
+@layer components {
+  .card-shadow {
+    box-shadow: 0 4px 24px rgba(11, 20, 55, 0.06);
+  }
+
+  .section-padding {
+    @apply py-20 lg:py-28;
+  }
+}
