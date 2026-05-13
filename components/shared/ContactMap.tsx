@@ -9,7 +9,7 @@ export function ContactMap() {
         allowFullScreen
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
-        title="Locație Vibe Design — Șos. Constanței nr. 19, Mangalia"
+        title="Locație DANI — Șos. Constanței nr. 19, Mangalia"
       />
     </div>
   );

@@ -6,7 +6,7 @@ import { ShieldCheck, Clock, FileCheck2 } from "lucide-react";
 export const metadata: Metadata = {
   title: "Obține Cadastru ANCPI - Integrare Oficială",
   description:
-    "Verifică și descarcă documentația cadastrală oficial de la ANCPI. Serviciu în curând disponibil pe Vibe Design.",
+    "Verifică și descarcă documentația cadastrală oficial de la ANCPI. Serviciu în curând disponibil pe DANI.",
 };
 
 const features = [

@@ -9,7 +9,7 @@ import { AncpiSection } from "@/components/sections/AncpiSection";
 import { ContactFormSection } from "@/components/sections/ContactFormSection";
 
 export const metadata: Metadata = {
-  title: "Vibe Design - Servicii Cadastru & Topografie | Autorizat ANCPI",
+  title: "DANI - Servicii Cadastru & Topografie | Autorizat ANCPI",
   description:
     "Servicii profesionale de cadastru, intabulare, topografie inginerească și scanare laser 3D în toată România. Autorizat ANCPI.",
 };

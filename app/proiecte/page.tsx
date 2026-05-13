@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Portofoliu Proiecte - Cadastru & Topografie",
   description:
-    "Portofoliu de proiecte Vibe Design: cadastru rezidențial, infrastructură, scanare 3D. Proiecte finalizate în toată România.",
+    "Portofoliu de proiecte DANI: cadastru rezidențial, infrastructură, scanare 3D. Proiecte finalizate în toată România.",
 };
 
 const tagColorMap = {

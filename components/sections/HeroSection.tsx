@@ -98,7 +98,7 @@ export function HeroSection() {
             <div className="relative overflow-hidden rounded-2xl aspect-[4/3] lg:aspect-[3/4] xl:aspect-[4/3]">
               <Image
                 src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=900&q=85"
-                alt="Inginer topograf cu stație totală - Vibe Design Cadastru"
+                alt="Inginer topograf cu stație totală - DANI Cadastru"
                 fill
                 className="object-cover"
                 priority

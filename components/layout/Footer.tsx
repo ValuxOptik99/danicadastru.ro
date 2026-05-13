@@ -14,12 +14,12 @@ export function Footer() {
             <Link href="/" className="flex items-center gap-3 mb-4">
               <Image
                 src="/logo/logo_dani.png"
-                alt="Vibe Design"
+                alt="DANI"
                 width={1254}
                 height={1254}
                 className="h-10 w-auto brightness-0 invert opacity-90"
               />
-              <span className="text-lg font-bold text-white">Vibe Design</span>
+              <Image src="/logo/logo_dani_scris.png" alt="DANI" width={891} height={306} className="h-6 w-auto brightness-0 invert opacity-90" />
             </Link>
             <p className="text-sm leading-relaxed mb-4">
               Expertiză tehnică în geodezie și cadastru. Standarde profesionale în măsurarea spațiului.
@@ -127,10 +127,20 @@ export function Footer() {
           </div>
         </div>
 
+        {/* ANPC badges */}
+        <div className="mb-8 flex flex-wrap items-center gap-4">
+          <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noopener noreferrer">
+            <Image src="/logo/anpc-sal.png" alt="ANPC SAL" width={530} height={136} className="h-10 w-auto opacity-80 hover:opacity-100 transition-opacity" />
+          </a>
+          <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">
+            <Image src="/logo/anpc-sol.png" alt="ANPC SOL" width={516} height={144} className="h-10 w-auto opacity-80 hover:opacity-100 transition-opacity" />
+          </a>
+        </div>
+
         {/* Bottom bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-center md:text-left">
-            © 2026 Vibe Design & Cadastru Authority. Toate drepturile rezervate. Firmă Acreditată ANCPI.
+            © 2026 DANI & Cadastru Authority. Toate drepturile rezervate. Firmă Acreditată ANCPI.
           </p>
           <div className="flex items-center gap-4 text-xs">
             <Link href="/politica-confidentialitate" className="hover:text-white transition-colors">

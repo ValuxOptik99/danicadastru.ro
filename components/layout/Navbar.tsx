@@ -50,30 +50,20 @@ export function Navbar() {
           <Link href="/" className="flex items-center gap-2">
             <Image
               src="/logo/logo_dani.png"
-              alt="Vibe Design Logo"
+              alt="DANI Logo"
               width={1254}
               height={1254}
-              className="h-12 w-auto"
+              className={cn("h-16 w-auto transition-all", scrolled ? "" : "brightness-0 invert")}
               priority
             />
-            <div className="flex flex-col gap-0.5">
-              <span
-                className={cn(
-                  "text-2xl font-bold leading-none tracking-tight transition-colors",
-                  scrolled ? "text-navy-ink" : "text-white"
-                )}
-              >
-                Vibe Design
-              </span>
-              <span
-                className={cn(
-                  "text-xs font-medium tracking-wide transition-colors",
-                  scrolled ? "text-text-muted" : "text-white/60"
-                )}
-              >
-                Cadastru și Intabulare
-              </span>
-            </div>
+            <Image
+              src="/logo/logo_dani_scris.png"
+              alt="DANI"
+              width={891}
+              height={306}
+              className={cn("h-12 w-auto transition-all", scrolled ? "" : "brightness-0 invert")}
+              priority
+            />
           </Link>
 
           {/* Desktop Nav */}
@@ -170,8 +160,8 @@ export function Navbar() {
           <div className="absolute right-0 top-0 bottom-0 w-full max-w-xs bg-white shadow-2xl flex flex-col">
             <div className="flex items-center justify-between p-4 border-b border-[#E5E9F2]">
               <Link href="/" className="flex items-center gap-2" onClick={() => setMobileOpen(false)}>
-                <Image src="/logo/logo_dani.png" alt="Vibe Design" width={1254} height={1254} className="h-9 w-auto" />
-                <span className="font-bold text-navy-ink">Vibe Design</span>
+                <Image src="/logo/logo_dani.png" alt="DANI" width={1254} height={1254} className="h-9 w-auto" />
+                <Image src="/logo/logo_dani_scris.png" alt="DANI" width={891} height={306} className="h-6 w-auto" />
               </Link>
               <button
                 onClick={() => setMobileOpen(false)}

@@ -15,8 +15,8 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://vibedesign.ro"),
   title: {
-    default: "Vibe Design - Servicii Cadastru & Topografie | Autorizat ANCPI",
-    template: "%s | Vibe Design Cadastru",
+    default: "DANI - Servicii Cadastru & Topografie | Autorizat ANCPI",
+    template: "%s | DANI Cadastru",
   },
   description:
     "Servicii profesionale de cadastru, intabulare, topografie inginerească și scanare laser 3D în toată România. Autorizat ANCPI, precizie milimetrică garantată.",
@@ -30,14 +30,14 @@ export const metadata: Metadata = {
     "măsurători topografice",
     "România",
   ],
-  authors: [{ name: "Vibe Design" }],
-  creator: "Vibe Design",
+  authors: [{ name: "DANI" }],
+  creator: "DANI",
   openGraph: {
     type: "website",
     locale: "ro_RO",
     url: "https://vibedesign.ro",
-    siteName: "Vibe Design",
-    title: "Vibe Design - Servicii Cadastru & Topografie | Autorizat ANCPI",
+    siteName: "DANI",
+    title: "DANI - Servicii Cadastru & Topografie | Autorizat ANCPI",
     description:
       "Servicii profesionale de cadastru, intabulare, topografie inginerească și scanare laser 3D în toată România.",
     images: [
@@ -45,13 +45,13 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Vibe Design - Cadastru & Topografie",
+        alt: "DANI - Cadastru & Topografie",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vibe Design - Servicii Cadastru & Topografie",
+    title: "DANI - Servicii Cadastru & Topografie",
     description: "Servicii profesionale de cadastru și topografie în România. Autorizat ANCPI.",
   },
   robots: {
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "Vibe Design",
+  name: "DANI",
   description:
     "Servicii profesionale de cadastru, intabulare, topografie inginerească și scanare laser 3D în toată România.",
   url: "https://vibedesign.ro",

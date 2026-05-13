@@ -6,7 +6,7 @@ import { ContactFormSection } from "@/components/sections/ContactFormSection";
 export const metadata: Metadata = {
   title: "Contact - Solicită Ofertă Gratuită",
   description:
-    "Contactează echipa Vibe Design pentru o ofertă gratuită de cadastru, topografie sau scanare 3D. Răspuns în maxim 24 ore.",
+    "Contactează echipa DANI pentru o ofertă gratuită de cadastru, topografie sau scanare 3D. Răspuns în maxim 24 ore.",
 };
 
 const contactInfo = [

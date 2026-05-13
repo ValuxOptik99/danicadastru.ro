@@ -4,9 +4,9 @@ import { Award, Users, Target, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "Despre Noi - Echipa Vibe Design",
+  title: "Despre Noi - Echipa DANI",
   description:
-    "Vibe Design este o firmă acreditată ANCPI specializată în cadastru, topografie și scanare laser 3D. Peste 10 ani de experiență, 15 ingineri autorizați.",
+    "DANI este o firmă acreditată ANCPI specializată în cadastru, topografie și scanare laser 3D. Peste 10 ani de experiență, 15 ingineri autorizați.",
 };
 
 const values = [
@@ -27,7 +27,7 @@ export default function DespreNoiPage() {
               Expertiza care contează
             </h1>
             <p className="text-white/60 text-lg leading-relaxed">
-              Vibe Design este o firmă autorizată ANCPI cu peste 10 ani de experiență în geodezie și cadastru.
+              DANI este o firmă autorizată ANCPI cu peste 10 ani de experiență în geodezie și cadastru.
               Lucrăm direct cu OCPI-urile din toată țara pentru a asigura documentații corecte din prima.
             </p>
           </div>
@@ -41,7 +41,7 @@ export default function DespreNoiPage() {
               <h2 className="text-2xl font-bold text-navy-ink mb-4">Povestea noastră</h2>
               <div className="space-y-4 text-text-muted leading-relaxed">
                 <p>
-                  Fondată în 2015, Vibe Design a crescut dintr-o echipă de 3 ingineri topografi într-o firmă
+                  Fondată în 2015, DANI a crescut dintr-o echipă de 3 ingineri topografi într-o firmă
                   cu 15 specialiști autorizați ANCPI, operând la nivel național.
                 </p>
                 <p>

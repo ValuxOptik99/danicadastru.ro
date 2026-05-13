@@ -101,7 +101,7 @@ export function LocalitatiContent() {
 
               <div className="prose prose-sm max-w-none space-y-4 text-text-muted leading-relaxed mb-6">
                 <p>
-                  <strong className="text-navy-ink">Vibe Design</strong> oferă servicii complete de cadastru și intabulare în{" "}
+                  <strong className="text-navy-ink">DANI</strong> oferă servicii complete de cadastru și intabulare în{" "}
                   <strong className="text-navy-ink">{selectedCity.name}</strong>, reședința județului{" "}
                   <strong className="text-navy-ink">{selectedCity.county}</strong>. Echipa noastră de specialiști autorizați ANCPI
                   lucrează direct cu OCPI {selectedCity.ocpi} pentru a asigura procesarea rapidă a documentațiilor tehnice.

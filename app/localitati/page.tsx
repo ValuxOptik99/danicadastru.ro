@@ -5,11 +5,11 @@ import { LocalitatiContent } from "./LocalitatiContent";
 export const metadata: Metadata = {
   title: "Servicii Cadastru în Toate Reședințele de Județ",
   description:
-    "Vibe Design oferă servicii de cadastru și intabulare în toate cele 41 de județe ale României. Specialiști ANCPI autorizați, documentație completă.",
+    "DANI oferă servicii de cadastru și intabulare în toate cele 41 de județe ale României. Specialiști ANCPI autorizați, documentație completă.",
   openGraph: {
-    title: "Servicii Cadastru în Toată România | Vibe Design",
+    title: "Servicii Cadastru în Toată România | DANI",
     description:
-      "Servicii de cadastru și intabulare în toate reședințele de județ. Vibe Design operează la nivel național.",
+      "Servicii de cadastru și intabulare în toate reședințele de județ. DANI operează la nivel național.",
   },
 };
 
