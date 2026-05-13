@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Facebook, Linkedin, Instagram, MapPin, Phone, Mail } from "lucide-react";
+import { CookieSettingsButton } from "@/components/cookies/CookieSettingsButton";
 
 const majorCities = ["București", "Cluj-Napoca", "Timișoara"];
 
@@ -35,7 +36,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 flex-shrink-0 text-brand-cyan" />
-                <a href="mailto:office@vibe-design.ro" className="hover:text-white transition-colors">office@vibe-design.ro</a>
+                <a href="mailto:office@danicadastru.ro" className="hover:text-white transition-colors">office@danicadastru.ro</a>
               </li>
             </ul>
             <div className="flex items-center gap-3">
@@ -139,21 +140,24 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-center md:text-left">
-            © 2026 DANI & Cadastru Authority. Toate drepturile rezervate. Firmă Acreditată ANCPI.
-          </p>
-          <div className="flex items-center gap-4 text-xs">
+          <div className="text-xs text-center md:text-left">
+            <p>© 2026 VIBE DESIGN GLOW SRL · CUI 46051134 · J2022001411131</p>
+            <p className="text-white/40 mt-0.5">Toate drepturile rezervate. Firmă Acreditată ANCPI.</p>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs">
             <Link href="/politica-confidentialitate" className="hover:text-white transition-colors">
-              Politică Confidențialitate
+              Confidențialitate
+            </Link>
+            <span className="text-white/20">·</span>
+            <Link href="/politica-cookies" className="hover:text-white transition-colors">
+              Cookie-uri
             </Link>
             <span className="text-white/20">·</span>
             <Link href="/termeni-si-conditii" className="hover:text-white transition-colors">
-              Termeni și Condiții
+              Termeni
             </Link>
             <span className="text-white/20">·</span>
-            <Link href="/harta-site" className="hover:text-white transition-colors">
-              Hartă Site
-            </Link>
+            <CookieSettingsButton />
           </div>
         </div>
       </div>

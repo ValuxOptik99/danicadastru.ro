@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import { WhatsAppButton } from "@/components/shared/WhatsAppButton";
 import { SiteLoader } from "@/components/loading/SiteLoader";
+import { CookieBanner } from "@/components/cookies/CookieBanner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -86,7 +87,7 @@ const jsonLd = {
     addressCountry: "RO",
   },
   telephone: "+40770556677",
-  email: "office@vibe-design.ro",
+  email: "office@danicadastru.ro",
   areaServed: [
     "București",
     "Cluj-Napoca",
@@ -117,9 +118,16 @@ export default function RootLayout({
   return (
     <html lang="ro" className={inter.variable}>
       <head>
+        {/* FOUC prevention */}
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{if(!sessionStorage.getItem('dani-loader-shown')){document.documentElement.style.background='#0A0E27';}}catch(e){}})();`,
+          }}
+        />
+        {/* Google Consent Mode v2 — default denied before any gtag fires */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});`,
           }}
         />
         <script
@@ -134,6 +142,7 @@ export default function RootLayout({
         <Footer />
         <Toaster />
         <WhatsAppButton />
+        <CookieBanner />
       </body>
     </html>
   );

@@ -15,6 +15,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/despre-noi`, changeFrequency: "monthly" as const, priority: 0.7 },
     { url: `${BASE_URL}/contact`, changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${BASE_URL}/obtine-cadastru-ancpi`, changeFrequency: "weekly" as const, priority: 0.85 },
+    { url: `${BASE_URL}/politica-confidentialitate`, changeFrequency: "yearly" as const, priority: 0.3 },
+    { url: `${BASE_URL}/politica-cookies`, changeFrequency: "yearly" as const, priority: 0.3 },
+    { url: `${BASE_URL}/termeni-si-conditii`, changeFrequency: "yearly" as const, priority: 0.3 },
   ];
 
   const cityPages = counties.map((county) => ({
