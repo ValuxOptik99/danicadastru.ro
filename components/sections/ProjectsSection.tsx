@@ -85,23 +85,23 @@ function ProjectCard({
           sizes={large ? "(max-width: 1024px) 100vw, 66vw" : "(max-width: 1024px) 100vw, 33vw"}
         />
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-navy-950/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
 
         {/* Content */}
-        <div className="absolute inset-0 flex flex-col justify-end p-5">
+        <div className="absolute inset-x-0 bottom-0 p-5 lg:p-6">
           <span
             className={cn(
-              "mb-2 inline-flex items-center self-start rounded-full border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider",
+              "inline-flex items-center rounded-full border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider",
               tagColorMap[project.tagColor]
             )}
           >
             {project.tag}
           </span>
-          <h3 className={cn("font-bold text-white text-shadow-sm", large ? "text-2xl md:text-3xl" : "text-lg")}>
+          <h3 className={cn("mt-2 font-bold text-white drop-shadow-md", large ? "text-2xl md:text-3xl" : "text-lg")}>
             {project.title}
           </h3>
           {large && (
-            <p className="mt-2 text-sm text-white/70 line-clamp-2">
+            <p className="mt-1.5 text-sm text-white/85 drop-shadow-md line-clamp-2">
               {project.description}
             </p>
           )}

@@ -16,7 +16,7 @@ export const projects: Project[] = [
     tag: "CADASTRU COMPLEX",
     tagColor: "cyan",
     imageUrl:
-      "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80",
+      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=85",
     imageAlt: "Ansamblu rezidențial modern - proiect cadastru DANI",
     description:
       "Documentație cadastrală completă pentru un ansamblu de 12 blocuri cu 480 de apartamente. Intabulare individuală și dezmembrare teren.",
@@ -28,7 +28,7 @@ export const projects: Project[] = [
     tag: "INFRASTRUCTURĂ",
     tagColor: "magenta",
     imageUrl:
-      "https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=600&q=80",
+      "https://images.unsplash.com/photo-1473445730015-841f29a9490b?auto=format&fit=crop&w=1200&q=85",
     imageAlt: "Pod autostradă - proiect topografie inginerească DANI",
     description:
       "Trasări de precizie milimetrică pentru infrastructura podului pe Autostrada A7. Monitorizare continuă pe durata construcției.",
@@ -40,7 +40,7 @@ export const projects: Project[] = [
     tag: "SCANARE 3D",
     tagColor: "violet",
     imageUrl:
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80",
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=85",
     imageAlt: "Clădire de birouri modernă - proiect scanare laser 3D DANI",
     description:
       "Scanare laser 3D a unui centru de birouri pe 8 etaje pentru modelare BIM și arhivare digitală. Nor de puncte de 2 miliarde de puncte.",

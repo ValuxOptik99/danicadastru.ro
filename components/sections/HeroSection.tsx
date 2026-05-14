@@ -33,7 +33,14 @@ export function HeroSection() {
             className="mt-6 text-5xl font-extrabold leading-tight text-white lg:text-6xl"
             style={{ letterSpacing: "-0.02em" }}
           >
-            Excelență în Geodezie și Cadastru
+            Excelență în{" "}
+            <span style={{ background: "linear-gradient(135deg, #22D3EE 0%, #8B5CF6 50%, #EC4899 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              Geodezie
+            </span>{" "}
+            și{" "}
+            <span style={{ background: "linear-gradient(135deg, #22D3EE 0%, #8B5CF6 50%, #EC4899 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              Cadastru
+            </span>
           </h1>
 
           {/* Subtitle */}
