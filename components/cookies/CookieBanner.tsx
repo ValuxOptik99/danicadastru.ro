@@ -16,7 +16,7 @@ function applyGtagConsent(analytics: boolean, marketing: boolean) {
   if (typeof window === "undefined") return;
   const g = (window as unknown as Record<string, unknown>).gtag;
   if (typeof g !== "function") return;
-  (g as Function)("consent", "update", {
+  (g as (...args: unknown[]) => void)("consent", "update", {
     analytics_storage: analytics ? "granted" : "denied",
     ad_storage: marketing ? "granted" : "denied",
     ad_user_data: marketing ? "granted" : "denied",
