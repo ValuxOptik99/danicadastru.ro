@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import { counties } from "@/lib/data/counties";
 
-const BASE_URL = "https://vibedesign.ro";
+const BASE_URL = "https://danicadastru.ro";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [

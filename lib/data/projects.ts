@@ -35,15 +35,15 @@ export const projects: Project[] = [
     size: "small",
   },
   {
-    id: "vibe-hub",
-    title: "Vibe Hub Office Center",
+    id: "atrium-office",
+    title: "Atrium Office Center",
     tag: "SCANARE 3D",
     tagColor: "violet",
     imageUrl:
       "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=85",
     imageAlt: "Clădire de birouri modernă - proiect scanare laser 3D DANI",
     description:
-      "Scanare laser 3D a unui centru de birouri pe 8 etaje pentru modelare BIM și arhivare digitală. Nor de puncte de 2 miliarde de puncte.",
+      "Scanare laser 3D pentru un atrium cu birouri moderne. Model BIM pentru renovare interioară.",
     size: "small",
   },
 ];

@@ -23,7 +23,7 @@ export function Footer() {
               <Image src="/logo/logo_dani_scris.png" alt="DANI" width={891} height={306} className="h-6 w-auto brightness-0 invert opacity-90" />
             </Link>
             <p className="text-sm leading-relaxed mb-4">
-              Expertiză tehnică în geodezie și cadastru. Standarde profesionale în măsurarea spațiului.
+              Servicii complete de cadastru, intabulare și topografie. Inginer autorizat ANCPI cu sediul în Mangalia, jud. Constanța. Acoperire în toată țara.
             </p>
             <ul className="mb-6 space-y-2 text-sm">
               <li className="flex items-start gap-2">

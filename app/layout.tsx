@@ -16,9 +16,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://vibedesign.ro"),
+  metadataBase: new URL("https://danicadastru.ro"),
   title: {
-    default: "DANI - Servicii Cadastru & Topografie | Autorizat ANCPI",
+    default: "DANI Cadastru — Servicii Cadastru, Intabulare și Topografie | Autorizat ANCPI",
     template: "%s | DANI Cadastru",
   },
   description:
@@ -33,29 +33,31 @@ export const metadata: Metadata = {
     "măsurători topografice",
     "România",
   ],
-  authors: [{ name: "DANI" }],
-  creator: "DANI",
+  authors: [{ name: "DANI Cadastru", url: "https://danicadastru.ro" }],
+  creator: "DANI Cadastru",
+  publisher: "VIBE DESIGN GLOW SRL",
   openGraph: {
     type: "website",
     locale: "ro_RO",
-    url: "https://vibedesign.ro",
-    siteName: "DANI",
-    title: "DANI - Servicii Cadastru & Topografie | Autorizat ANCPI",
+    url: "https://danicadastru.ro",
+    siteName: "DANI Cadastru",
+    title: "DANI Cadastru — Servicii Cadastru, Intabulare și Topografie",
     description:
-      "Servicii profesionale de cadastru, intabulare, topografie inginerească și scanare laser 3D în toată România.",
+      "Servicii profesionale de cadastru, intabulare și topografie. Autorizat ANCPI. Răspuns rapid pe WhatsApp.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "DANI - Cadastru & Topografie",
+        alt: "DANI Cadastru — Servicii Cadastru și Topografie",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "DANI - Servicii Cadastru & Topografie",
-    description: "Servicii profesionale de cadastru și topografie în România. Autorizat ANCPI.",
+    title: "DANI Cadastru — Servicii Cadastru și Topografie",
+    description: "Servicii profesionale de cadastru, intabulare și topografie. Autorizat ANCPI.",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "DANI Cadastru — Cadastru și Topografie" }],
   },
   robots: {
     index: true,
@@ -73,12 +75,12 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "DANI",
+  name: "DANI Cadastru",
   description:
     "Servicii profesionale de cadastru, intabulare, topografie inginerească și scanare laser 3D în toată România.",
-  url: "https://vibedesign.ro",
-  logo: "https://vibedesign.ro/logo/VDlogo.png",
-  image: "https://vibedesign.ro/og-image.jpg",
+  url: "https://danicadastru.ro",
+  logo: "https://danicadastru.ro/logo/logo_dani.png",
+  image: "https://danicadastru.ro/og-image.jpg",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Șos. Constanței nr. 19",

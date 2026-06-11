@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://vibedesign.ro/sitemap.xml",
+    sitemap: "https://danicadastru.ro/sitemap.xml",
   };
 }
