@@ -9,9 +9,30 @@ import { AncpiSection } from "@/components/sections/AncpiSection";
 import { ContactFormSection } from "@/components/sections/ContactFormSection";
 
 export const metadata: Metadata = {
-  title: "DANI - Servicii Cadastru & Topografie | Autorizat ANCPI",
+  title: "DANI Cadastru — Cadastru, Intabulare și Topografie în Mangalia și toată România",
   description:
-    "Servicii profesionale de cadastru, intabulare, topografie inginerească și scanare laser 3D în toată România. Autorizat ANCPI.",
+    "Servicii complete de cadastru, intabulare și topografie. Inginer autorizat ANCPI. Cadastru apartament, casă, teren, dezmembrare, alipire, topografie șantier. Consultanță gratuită. Răspuns rapid pe WhatsApp.",
+  keywords: [
+    "cadastru",
+    "intabulare",
+    "cadastru apartament",
+    "cadastru casă",
+    "cadastru teren",
+    "dezmembrare teren",
+    "alipire teren",
+    "ridicare topografică",
+    "topografie pentru construcții",
+    "trasare casă",
+    "certificat de edificare",
+    "apartamentare bloc",
+    "servicii cadastrale",
+    "inginer cadastru",
+    "topograf autorizat",
+    "DANI Cadastru",
+    "Mangalia",
+    "Constanța",
+  ],
+  alternates: { canonical: "/" },
 };
 
 export default function HomePage() {

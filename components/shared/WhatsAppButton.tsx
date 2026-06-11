@@ -4,7 +4,7 @@ export function WhatsAppButton() {
       {/* Pulsing ring */}
       <span className="absolute inset-0 rounded-full animate-ping opacity-60" style={{ backgroundColor: "#25D366" }} />
     <a
-      href="https://wa.me/40770556677"
+      href="https://wa.me/40770556677?text=Bun%C4%83!%20A%C8%99%20dori%20o%20ofert%C4%83%20pentru%20servicii%20de%20cadastru."
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contactează-ne pe WhatsApp"
