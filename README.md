@@ -1,6 +1,6 @@
-# Vibe Design — Website Cadastru & Topografie
+# DANI Cadastru — Website Cadastru & Topografie
 
-Next.js 14 website for Vibe Design, an ANCPI-accredited Romanian surveying company.
+Next.js 14 website for DANI Cadastru (VIBE DESIGN GLOW SRL), an ANCPI-accredited Romanian surveying company.
 
 ## Stack
 - **Next.js 14** (App Router, TypeScript)

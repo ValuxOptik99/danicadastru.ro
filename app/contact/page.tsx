@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const contactInfo = [
   { icon: Phone, label: "Telefon", value: "0770 55 66 77", href: "tel:+40770556677" },
-  { icon: Mail, label: "Email", value: "office@vibe-design.ro", href: "mailto:office@vibe-design.ro" },
+  { icon: Mail, label: "Email", value: "office@danicadastru.ro", href: "mailto:office@danicadastru.ro" },
   { icon: MapPin, label: "Sediu", value: "Șos. Constanței nr. 19, Mangalia", href: "#" },
 ];
 
