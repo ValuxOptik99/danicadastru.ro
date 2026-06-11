@@ -1,25 +1,22 @@
 import type { Metadata } from "next";
-import { Home, Hammer, Building2, PencilRuler, Scale, ShieldCheck, Check } from "lucide-react";
+import Link from "next/link";
+import { Home, Hammer, Building2, PencilRuler, Scale, ShieldCheck, Check, ArrowRight } from "lucide-react";
 import { services } from "@/lib/data/services";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Servicii Cadastru, Intabulare și Topografie",
-  description:
-    "Servicii cadastrale complete organizate pe tipul clientului: proprietari, construire casă, dezvoltatori, arhitecți, notari/avocați, due diligence. Autorizat ANCPI.",
+  title: "Servicii Cadastrale și Topografice — DANI Cadastru",
+  description: "Cadastru, intabulare, topografie și scanare 3D pentru proprietari, dezvoltatori, arhitecți, notari și investitori. Inginer autorizat ANCPI. Acoperire națională.",
+  alternates: { canonical: "/servicii" },
 };
 
 const iconMap = { Home, Hammer, Building2, PencilRuler, Scale, ShieldCheck } as const;
 
 const accentClass = {
-  cyan: "text-brand-cyan bg-brand-cyan/10",
+  cyan:   "text-brand-cyan bg-brand-cyan/10",
   violet: "text-brand-violet bg-brand-violet/10",
-  pink: "text-brand-pink bg-brand-pink/10",
+  pink:   "text-brand-pink bg-brand-pink/10",
 };
-
-const EXISTING_ROUTES = new Set<string>([
-  // new routes will be added here in Prompt #2
-]);
 
 export default function ServiciiPage() {
   return (
@@ -45,61 +42,42 @@ export default function ServiciiPage() {
         <div className="container mx-auto px-4 lg:px-6">
           <div className="space-y-8">
             {services.map((service, i) => {
-              const Icon = iconMap[service.icon as keyof typeof iconMap];
+              const Icon = iconMap[service.icon as keyof typeof iconMap] ?? ShieldCheck;
               const accent = accentClass[service.accentColor as keyof typeof accentClass];
-              const isLive = EXISTING_ROUTES.has(service.slug);
-
-              const cardContent = (
-                <div
-                  className={cn(
-                    "relative grid items-center gap-8 rounded-2xl border border-[#E5E9F2] p-8 card-shadow",
-                    i % 2 === 0 ? "lg:grid-cols-[1fr_2fr]" : "lg:grid-cols-[2fr_1fr]"
-                  )}
-                >
-                  {!isLive && (
-                    <span className="absolute right-4 top-4 rounded-full bg-navy-ink/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-text-muted">
-                      În curând
-                    </span>
-                  )}
-
-                  <div className={cn(i % 2 !== 0 && "lg:order-2")}>
-                    <div className={cn("mb-4 flex h-14 w-14 items-center justify-center rounded-2xl", accent)}>
-                      <Icon className="h-7 w-7" />
-                    </div>
-                    <h2 className="mb-3 text-2xl font-bold text-navy-ink">{service.title}</h2>
-                    <p className="mb-4 text-text-muted leading-relaxed">{service.description}</p>
-                    {isLive ? (
-                      <span className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white" style={{ background: "linear-gradient(to right, #D946EF, #EC4899)" }}>
-                        Detalii serviciu
-                      </span>
-                    ) : (
-                      <span className="inline-flex items-center gap-2 rounded-full border border-[#E5E9F2] px-5 py-2.5 text-sm font-semibold text-text-muted cursor-default">
-                        Pagina în pregătire
-                      </span>
-                    )}
-                  </div>
-
-                  <div className={cn(i % 2 !== 0 && "lg:order-1")}>
-                    <ul className="space-y-3">
-                      {service.bullets.map((b) => (
-                        <li key={b} className="flex items-center gap-3 text-sm text-navy-ink">
-                          <Check className="h-4 w-4 flex-shrink-0 text-brand-cyan" />
-                          {b}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              );
-
               return (
-                <div key={service.slug}>
-                  {isLive ? (
-                    <a href={service.href}>{cardContent}</a>
-                  ) : (
-                    cardContent
-                  )}
-                </div>
+                <Link
+                  key={service.slug}
+                  href={service.href}
+                  className="group block"
+                >
+                  <div
+                    className={cn(
+                      "grid items-center gap-8 rounded-2xl border border-[#E5E9F2] p-8 card-shadow transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-[0_8px_40px_rgba(11,20,55,0.12)]",
+                      i % 2 === 0 ? "lg:grid-cols-[1fr_2fr]" : "lg:grid-cols-[2fr_1fr]"
+                    )}
+                  >
+                    <div className={cn(i % 2 !== 0 && "lg:order-2")}>
+                      <div className={cn("mb-4 flex h-14 w-14 items-center justify-center rounded-2xl", accent)}>
+                        <Icon className="h-7 w-7" />
+                      </div>
+                      <h2 className="mb-3 text-2xl font-bold text-navy-ink">{service.title}</h2>
+                      <p className="mb-4 text-text-muted leading-relaxed">{service.description}</p>
+                      <span className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#D946EF] to-[#EC4899] px-5 py-2.5 text-sm font-semibold text-white transition group-hover:brightness-110">
+                        Detalii serviciu <ArrowRight className="h-4 w-4" />
+                      </span>
+                    </div>
+                    <div className={cn(i % 2 !== 0 && "lg:order-1")}>
+                      <ul className="space-y-3">
+                        {service.bullets.map((b) => (
+                          <li key={b} className="flex items-center gap-3 text-sm text-navy-ink">
+                            <Check className="h-4 w-4 flex-shrink-0 text-brand-cyan" />
+                            {b}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </Link>
               );
             })}
           </div>

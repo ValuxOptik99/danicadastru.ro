@@ -3,25 +3,25 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, ChevronDown, FileCheck2, Compass, ScanLine } from "lucide-react";
+import { Menu, X, ChevronDown, Home, Hammer, Building2, PencilRuler, Scale, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
 import { cn } from "@/lib/utils";
 
+const servicesMenu = [
+  { href: "/servicii/proprietari",           label: "Pentru Proprietari",    Icon: Home        },
+  { href: "/servicii/construire-casa",        label: "Construire Casă",       Icon: Hammer      },
+  { href: "/servicii/dezvoltatori",           label: "Dezvoltatori",          Icon: Building2   },
+  { href: "/servicii/arhitecti-proiectanti",  label: "Arhitecți",             Icon: PencilRuler },
+  { href: "/servicii/notari-avocati",         label: "Notari & Avocați",      Icon: Scale       },
+  { href: "/servicii/due-diligence",          label: "Due Diligence",         Icon: ShieldCheck },
+];
+
 const navLinks = [
-  {
-    label: "Servicii",
-    href: "/servicii",
-    dropdown: [
-      { label: "Cadastru & Intabulare", href: "/servicii/cadastru-intabulare", icon: FileCheck2 },
-      { label: "Topografie Inginerească", href: "/servicii/topografie-ingineresca", icon: Compass },
-      { label: "Scanare Laser 3D", href: "/servicii/scanare-laser-3d", icon: ScanLine },
-    ],
-  },
-  { label: "Proiecte", href: "/proiecte" },
+  { label: "Servicii", href: "/servicii", hasDropdown: true },
+  { label: "Proiecte",  href: "/proiecte" },
   { label: "Localități", href: "/localitati" },
   { label: "Despre Noi", href: "/despre-noi" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact",   href: "/contact" },
 ];
 
 export function Navbar() {
@@ -69,7 +69,7 @@ export function Navbar() {
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) =>
-              link.dropdown ? (
+              link.hasDropdown ? (
                 <div
                   key={link.label}
                   className="relative group"
@@ -87,29 +87,34 @@ export function Navbar() {
                     {link.label}
                     <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" />
                   </button>
+
                   <div
                     className={cn(
-                      "absolute top-full left-0 mt-2 w-64 rounded-2xl border border-[#E5E9F2] bg-white shadow-xl p-2 transition-all duration-200 origin-top",
+                      "absolute top-full left-0 mt-2 w-72 rounded-2xl border border-[#E5E9F2] bg-white shadow-xl p-2 transition-all duration-200 origin-top",
                       servicesOpen
                         ? "opacity-100 scale-100 pointer-events-auto"
                         : "opacity-0 scale-95 pointer-events-none"
                     )}
                   >
-                    {link.dropdown.map((item) => {
-                      const Icon = item.icon;
-                      return (
-                        <Link
-                          key={item.href}
-                          href={item.href}
-                          className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-navy-ink hover:bg-bg-muted transition-colors"
-                        >
-                          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-cyan/10">
-                            <Icon className="h-4 w-4 text-brand-cyan" />
-                          </div>
-                          {item.label}
-                        </Link>
-                      );
-                    })}
+                    {servicesMenu.map(({ href, label, Icon }) => (
+                      <Link
+                        key={href}
+                        href={href}
+                        className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-navy-ink hover:bg-bg-muted transition-colors"
+                      >
+                        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-cyan/10">
+                          <Icon className="h-4 w-4 text-brand-cyan" />
+                        </div>
+                        {label}
+                      </Link>
+                    ))}
+                    <div className="mx-3 my-1.5 h-px bg-[#E5E9F2]" />
+                    <Link
+                      href="/servicii"
+                      className="flex items-center justify-center rounded-xl px-3 py-2 text-xs font-semibold uppercase tracking-wider text-brand-cyan hover:bg-brand-cyan/5 transition-colors"
+                    >
+                      Toate serviciile →
+                    </Link>
                   </div>
                 </div>
               ) : (
@@ -171,40 +176,46 @@ export function Navbar() {
                 <X className="h-5 w-5" />
               </button>
             </div>
+
             <nav className="flex-1 overflow-y-auto p-4 space-y-1">
-              {navLinks.map((link) =>
-                link.dropdown ? (
-                  <div key={link.label}>
-                    <p className="px-3 py-2 text-xs font-semibold uppercase tracking-widest text-text-muted mt-2 mb-1">
-                      {link.label}
-                    </p>
-                    {link.dropdown.map((item) => {
-                      const Icon = item.icon;
-                      return (
-                        <Link
-                          key={item.href}
-                          href={item.href}
-                          onClick={() => setMobileOpen(false)}
-                          className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-navy-ink hover:bg-bg-muted"
-                        >
-                          <Icon className="h-4 w-4 text-brand-cyan" />
-                          {item.label}
-                        </Link>
-                      );
-                    })}
-                  </div>
-                ) : (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="flex items-center px-3 py-2.5 rounded-xl text-sm font-medium text-navy-ink hover:bg-bg-muted"
-                  >
-                    {link.label}
-                  </Link>
-                )
-              )}
+              {/* Services section */}
+              <p className="px-3 py-2 text-xs font-semibold uppercase tracking-widest text-text-muted mt-2 mb-1">
+                Servicii
+              </p>
+              {servicesMenu.map(({ href, label, Icon }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-navy-ink hover:bg-bg-muted"
+                >
+                  <Icon className="h-4 w-4 text-brand-cyan" />
+                  {label}
+                </Link>
+              ))}
+              <Link
+                href="/servicii"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center px-3 py-2 text-xs font-semibold text-brand-cyan hover:bg-brand-cyan/5 rounded-xl"
+              >
+                Toate serviciile →
+              </Link>
+
+              <div className="my-2 h-px bg-[#E5E9F2]" />
+
+              {/* Other nav links */}
+              {navLinks.filter((l) => !l.hasDropdown).map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center px-3 py-2.5 rounded-xl text-sm font-medium text-navy-ink hover:bg-bg-muted"
+                >
+                  {link.label}
+                </Link>
+              ))}
             </nav>
+
             <div className="p-4 border-t border-[#E5E9F2]">
               <Button asChild size="default" className="w-full">
                 <Link href="/contact" onClick={() => setMobileOpen(false)}>

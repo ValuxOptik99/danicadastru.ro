@@ -87,16 +87,15 @@ export function Footer() {
             </h3>
             <ul className="space-y-2.5">
               {[
-                { label: "Cadastru & Intabulare", href: "/servicii/cadastru-intabulare" },
-                { label: "Topografie Inginerească", href: "/servicii/topografie-ingineresca" },
-                { label: "Scanare Laser 3D", href: "/servicii/scanare-laser-3d" },
-                { label: "Obține Cadastru ANCPI", href: "/obtine-cadastru-ancpi" },
+                { label: "Pentru Proprietari",   href: "/servicii/proprietari" },
+                { label: "Construire Casă",       href: "/servicii/construire-casa" },
+                { label: "Dezvoltatori",          href: "/servicii/dezvoltatori" },
+                { label: "Arhitecți",             href: "/servicii/arhitecti-proiectanti" },
+                { label: "Notari & Avocați",      href: "/servicii/notari-avocati" },
+                { label: "Due Diligence",         href: "/servicii/due-diligence" },
               ].map(({ label, href }) => (
                 <li key={label}>
-                  <Link
-                    href={href}
-                    className="text-sm hover:text-white transition-colors"
-                  >
+                  <Link href={href} className="text-sm hover:text-white transition-colors">
                     {label}
                   </Link>
                 </li>
