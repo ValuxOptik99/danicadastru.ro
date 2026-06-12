@@ -3,12 +3,13 @@ import Link from "next/link";
 import { Home, Hammer, Building2, PencilRuler, Scale, ShieldCheck, Check, ArrowRight } from "lucide-react";
 import { services } from "@/lib/data/services";
 import { cn } from "@/lib/utils";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Servicii Cadastrale și Topografice — DANI Cadastru",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Servicii Cadastrale și Topografice",
   description: "Cadastru, intabulare, topografie și scanare 3D pentru proprietari, dezvoltatori, arhitecți, notari și investitori. Inginer autorizat ANCPI. Acoperire națională.",
-  alternates: { canonical: "/servicii" },
-};
+  path: "/servicii",
+});
 
 const iconMap = { Home, Hammer, Building2, PencilRuler, Scale, ShieldCheck } as const;
 

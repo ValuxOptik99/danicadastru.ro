@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { ServicePageLayout, type ServicePageData } from "@/components/services/ServicePageLayout";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Topografie pentru Construire Casă — Trasare, Ridicare, Releveu | DANI Cadastru",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Topografie pentru Construire Casă",
   description: "Servicii topografice pentru construirea unei case: ridicare topografică pentru autorizație, trasare casă pe teren, releveu, certificat de edificare. Acoperire în toată România.",
-  alternates: { canonical: "/servicii/construire-casa" },
-};
+  path: "/servicii/construire-casa",
+});
 
 const data: ServicePageData = {
   eyebrow: "SERVICII PENTRU CONSTRUIRE CASĂ",

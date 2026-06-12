@@ -7,11 +7,15 @@ import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { LocationsTeaserSection } from "@/components/sections/LocationsTeaserSection";
 import { AncpiSection } from "@/components/sections/AncpiSection";
 import { ContactFormSection } from "@/components/sections/ContactFormSection";
+import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "DANI Cadastru — Cadastru, Intabulare și Topografie în Mangalia și toată România",
-  description:
-    "Servicii complete de cadastru, intabulare și topografie. Inginer autorizat ANCPI. Cadastru apartament, casă, teren, dezmembrare, alipire, topografie șantier. Consultanță gratuită. Răspuns rapid pe WhatsApp.",
+  ...buildPageMetadata({
+    title: "Cadastru, Intabulare și Topografie",
+    description:
+      "Servicii complete de cadastru, intabulare și topografie. Inginer autorizat ANCPI. Cadastru apartament, casă, teren, dezmembrare, alipire, topografie șantier. Consultanță gratuită. Răspuns rapid pe WhatsApp.",
+    path: "/",
+  }),
   keywords: [
     "cadastru",
     "intabulare",
@@ -32,7 +36,6 @@ export const metadata: Metadata = {
     "Mangalia",
     "Constanța",
   ],
-  alternates: { canonical: "/" },
 };
 
 export default function HomePage() {

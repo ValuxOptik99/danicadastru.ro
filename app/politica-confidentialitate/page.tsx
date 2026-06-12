@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Politică de Confidențialitate",
-  description: "Politica de confidențialitate VIBE DESIGN GLOW SRL — modul în care colectăm, utilizăm și protejăm datele dumneavoastră personale.",
+  ...buildPageMetadata({
+    title: "Politică de Confidențialitate",
+    description: "Politica de confidențialitate VIBE DESIGN GLOW SRL — modul în care colectăm, utilizăm și protejăm datele dumneavoastră personale.",
+    path: "/politica-confidentialitate",
+  }),
   robots: { index: false, follow: false },
 };
 

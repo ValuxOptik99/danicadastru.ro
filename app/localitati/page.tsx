@@ -1,17 +1,14 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { LocalitatiContent } from "./LocalitatiContent";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Servicii Cadastru în Toate Reședințele de Județ",
   description:
     "DANI oferă servicii de cadastru și intabulare în toate cele 41 de județe ale României. Specialiști ANCPI autorizați, documentație completă.",
-  openGraph: {
-    title: "Servicii Cadastru în Toată România | DANI",
-    description:
-      "Servicii de cadastru și intabulare în toate reședințele de județ. DANI operează la nivel național.",
-  },
-};
+  path: "/localitati",
+});
 
 export default function LocalitatiPage() {
   return (

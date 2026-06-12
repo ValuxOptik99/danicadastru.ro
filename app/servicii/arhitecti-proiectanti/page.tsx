@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { ServicePageLayout, type ServicePageData } from "@/components/services/ServicePageLayout";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Topografie pentru Arhitecți și Proiectanți | Ridicări, DWG, MDT — DANI Cadastru",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Topografie pentru Arhitecți și Proiectanți",
   description: "Ridicări topografice complete, planuri de situație, modele digitale de teren și fișiere DWG/DXF pentru arhitecți și proiectanți. Livrare rapidă, precizie ridicată.",
-  alternates: { canonical: "/servicii/arhitecti-proiectanti" },
-};
+  path: "/servicii/arhitecti-proiectanti",
+});
 
 const data: ServicePageData = {
   eyebrow: "SERVICII PENTRU ARHITECȚI",

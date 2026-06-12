@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import { CookieSettingsButton } from "@/components/cookies/CookieSettingsButton";
+import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Politică Cookie-uri",
-  description: "Politica de utilizare a cookie-urilor pe site-ul DANI Cadastru — ce cookie-uri folosim și cum le gestionezi.",
+  ...buildPageMetadata({
+    title: "Politică Cookie-uri",
+    description: "Politica de utilizare a cookie-urilor pe site-ul DANI Cadastru — ce cookie-uri folosim și cum le gestionezi.",
+    path: "/politica-cookies",
+  }),
   robots: { index: false, follow: false },
 };
 

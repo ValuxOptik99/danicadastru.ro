@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { ServicePageLayout, type ServicePageData } from "@/components/services/ServicePageLayout";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Due Diligence Cadastral — Verificare Imobil Înainte de Cumpărare | DANI Cadastru",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Due Diligence Cadastral — Verificare Imobil Înainte de Cumpărare",
   description: "Verificăm complet situația tehnică și juridică a unui imobil înainte de cumpărare. Carte funciară, suprapuneri, limite reale, riscuri tehnice. Pentru investitori prudenți.",
-  alternates: { canonical: "/servicii/due-diligence" },
-};
+  path: "/servicii/due-diligence",
+});
 
 const data: ServicePageData = {
   eyebrow: "CONSULTANȚĂ ȘI VERIFICĂRI",

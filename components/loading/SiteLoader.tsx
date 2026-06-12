@@ -37,10 +37,10 @@ export function SiteLoader() {
       aria-hidden="true"
     >
       {/* Logo container */}
-      <div className="relative h-[80px] w-[280px] sm:h-[100px] sm:w-[360px]">
+      <div className="relative h-[140px] w-[420px] sm:h-[180px] sm:w-[540px]">
         {/* Colored logo — bottom layer, always visible */}
         <Image
-          src="/logo/logo_dani_scris.png"
+          src="/logo/dani-cadastru-logo-transparent_1.png"
           alt=""
           fill
           priority
@@ -56,7 +56,7 @@ export function SiteLoader() {
           style={{ willChange: "clip-path" }}
         >
           <Image
-            src="/logo/logo_dani_scris.png"
+            src="/logo/dani-cadastru-logo-transparent_1.png"
             alt=""
             fill
             priority

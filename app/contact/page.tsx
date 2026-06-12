@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { ContactFormSection } from "@/components/sections/ContactFormSection";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact - Solicită Ofertă Gratuită",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Contact — Solicită Ofertă Gratuită",
   description:
     "Contactează echipa DANI pentru o ofertă gratuită de cadastru, topografie sau scanare 3D. Răspuns în maxim 24 ore.",
-};
+  path: "/contact",
+});
 
 const contactInfo = [
   { icon: Phone, label: "Telefon", value: "0770 55 66 77", href: "tel:+40770556677" },

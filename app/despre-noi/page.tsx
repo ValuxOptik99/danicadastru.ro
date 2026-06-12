@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Award, Users, Target, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Despre Noi - Echipa DANI",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Despre Noi — Echipa DANI Cadastru",
   description:
     "DANI este o firmă acreditată ANCPI specializată în cadastru, topografie și scanare laser 3D. Peste 10 ani de experiență, 15 ingineri autorizați.",
-};
+  path: "/despre-noi",
+});
 
 const values = [
   { icon: ShieldCheck, title: "Precizie", desc: "Fiecare măsurătoare este verificată de minim 2 ingineri autorizați." },

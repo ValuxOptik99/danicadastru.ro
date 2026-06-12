@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { projects } from "@/lib/data/projects";
 import { cn } from "@/lib/utils";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Portofoliu Proiecte - Cadastru & Topografie",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Portofoliu Proiecte Cadastru și Topografie",
   description:
     "Portofoliu de proiecte DANI: cadastru rezidențial, infrastructură, scanare 3D. Proiecte finalizate în toată România.",
-};
+  path: "/proiecte",
+});
 
 const tagColorMap = {
   cyan: "bg-brand-cyan/20 text-brand-cyan border-brand-cyan/30",

@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { AncpiSection } from "@/components/sections/AncpiSection";
 import { ShieldCheck, Clock, FileCheck2 } from "lucide-react";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Obține Cadastru ANCPI - Integrare Oficială",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Obține Cadastru ANCPI — Integrare Oficială",
   description:
     "Verifică și descarcă documentația cadastrală oficial de la ANCPI. Serviciu în curând disponibil pe DANI.",
-};
+  path: "/obtine-cadastru-ancpi",
+});
 
 const features = [
   { icon: ShieldCheck, title: "Date oficiale", desc: "Direct din sistemul ANCPI, validate și certificate." },

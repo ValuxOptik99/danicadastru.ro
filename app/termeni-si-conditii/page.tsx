@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Termeni și Condiții",
-  description: "Termenii și condițiile de utilizare a site-ului și serviciilor VIBE DESIGN GLOW SRL (DANI Cadastru).",
+  ...buildPageMetadata({
+    title: "Termeni și Condiții",
+    description: "Termenii și condițiile de utilizare a site-ului și serviciilor VIBE DESIGN GLOW SRL (DANI Cadastru).",
+    path: "/termeni-si-conditii",
+  }),
   robots: { index: false, follow: false },
 };
 

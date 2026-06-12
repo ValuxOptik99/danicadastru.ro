@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { ServicePageLayout, type ServicePageData } from "@/components/services/ServicePageLayout";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Servicii Cadastrale pentru Dezvoltatori Imobiliari | DANI Cadastru",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Servicii Cadastrale pentru Dezvoltatori Imobiliari",
   description: "Parcelări, lotizări, apartamentare, topografie șantier și scanare laser 3D pentru dezvoltatori. Suport tehnic complet de la achiziție teren la livrare. Inginer autorizat ANCPI.",
-  alternates: { canonical: "/servicii/dezvoltatori" },
-};
+  path: "/servicii/dezvoltatori",
+});
 
 const data: ServicePageData = {
   eyebrow: "SERVICII PENTRU DEZVOLTATORI",

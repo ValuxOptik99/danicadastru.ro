@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { ServicePageLayout, type ServicePageData } from "@/components/services/ServicePageLayout";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Servicii Cadastrale pentru Notari și Avocați | DANI Cadastru",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Servicii Cadastrale pentru Notari și Avocați",
   description: "Documentații cadastrale pentru tranzacții notariale, succesiuni, partaje și rectificări de carte funciară. Suport tehnic pentru litigii imobiliare. Livrare rapidă.",
-  alternates: { canonical: "/servicii/notari-avocati" },
-};
+  path: "/servicii/notari-avocati",
+});
 
 const data: ServicePageData = {
   eyebrow: "SERVICII PENTRU NOTARI ȘI AVOCAȚI",
