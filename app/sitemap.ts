@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/servicii/due-diligence`, changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${BASE_URL}/proiecte`, changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${BASE_URL}/localitati`, changeFrequency: "weekly" as const, priority: 0.9 },
+    { url: `${BASE_URL}/intrebari-frecvente`, changeFrequency: "monthly" as const, priority: 0.7 },
     { url: `${BASE_URL}/despre-noi`, changeFrequency: "monthly" as const, priority: 0.7 },
     { url: `${BASE_URL}/contact`, changeFrequency: "monthly" as const, priority: 0.8 },
     { url: `${BASE_URL}/obtine-cadastru-ancpi`, changeFrequency: "weekly" as const, priority: 0.85 },

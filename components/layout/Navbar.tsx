@@ -21,6 +21,7 @@ const navLinks = [
   { label: "Proiecte",  href: "/proiecte" },
   { label: "Localități", href: "/localitati" },
   { label: "Despre Noi", href: "/despre-noi" },
+  { label: "Întrebări Frecvente", href: "/intrebari-frecvente" },
   { label: "Contact",   href: "/contact" },
 ];
 

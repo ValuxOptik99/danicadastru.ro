@@ -67,6 +67,7 @@ export function Footer() {
                 { label: "Despre Noi", href: "/despre-noi" },
                 { label: "Echipa", href: "/despre-noi#echipa" },
                 { label: "Cariere", href: "/despre-noi#cariere" },
+                { label: "Întrebări Frecvente", href: "/intrebari-frecvente" },
               ].map(({ label, href }) => (
                 <li key={label}>
                   <Link
