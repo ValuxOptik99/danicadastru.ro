@@ -4,18 +4,20 @@ import { useEffect, useRef, useState } from "react";
 import CountUp from "react-countup";
 
 interface Stat {
-  value: number;
-  suffix: string;
-  label: string;
+  value?: number;
+  text?: string;
+  suffix?: string;
   prefix?: string;
+  label: string;
+  countUp?: boolean;
   decimals?: number;
 }
 
 const stats: Stat[] = [
-  { value: 10, suffix: "+", label: "ANI EXPERIENȚĂ" },
-  { value: 2.5, suffix: "k", label: "PROIECTE FINALIZATE", decimals: 1 },
-  { value: 100, suffix: "%", label: "ACURATEȚE CERTIFICATĂ" },
-  { value: 15, suffix: "", label: "SPECIALIȘTI AUTORIZAȚI" },
+  { value: 3000, suffix: "+", label: "LUCRĂRI REALIZATE", countUp: true },
+  { value: 2016, label: "EXPERIENȚĂ DIN", countUp: false },
+  { value: 100, suffix: "%", label: "CONFORME ANCPI", countUp: true },
+  { text: "A & B", label: "AUTORIZARE ANCPI", countUp: false },
 ];
 
 export function StatsBar() {
@@ -35,27 +37,35 @@ export function StatsBar() {
     <section ref={ref} className="bg-navy-900 py-10 lg:py-14">
       <div className="container mx-auto px-4 lg:px-6">
         <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
-          {stats.map((stat, i) => (
-            <div key={i} className="text-center">
-              <div className="text-3xl font-extrabold text-white sm:text-4xl md:text-5xl">
-                {inView ? (
-                  <CountUp
-                    start={0}
-                    end={stat.value}
-                    duration={2.5}
-                    decimals={stat.decimals ?? 0}
-                    suffix={stat.suffix}
-                    prefix={stat.prefix}
-                  />
-                ) : (
-                  <span>0{stat.suffix}</span>
-                )}
+          {stats.map((stat, i) => {
+            const isStatic = stat.countUp === false || !!stat.text;
+            const staticDisplay = stat.text
+              ?? `${stat.prefix ?? ""}${stat.value ?? ""}${stat.suffix ?? ""}`;
+
+            return (
+              <div key={i} className="text-center">
+                <div className="text-3xl font-extrabold text-white sm:text-4xl md:text-5xl">
+                  {isStatic ? (
+                    <span>{staticDisplay}</span>
+                  ) : inView ? (
+                    <CountUp
+                      start={0}
+                      end={stat.value!}
+                      duration={2.5}
+                      decimals={stat.decimals ?? 0}
+                      suffix={stat.suffix}
+                      prefix={stat.prefix}
+                    />
+                  ) : (
+                    <span>0{stat.suffix}</span>
+                  )}
+                </div>
+                <p className="mt-2 text-[10px] font-semibold uppercase tracking-widest text-white/50 sm:text-xs">
+                  {stat.label}
+                </p>
               </div>
-              <p className="mt-2 text-[10px] font-semibold uppercase tracking-widest text-white/50 sm:text-xs">
-                {stat.label}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
