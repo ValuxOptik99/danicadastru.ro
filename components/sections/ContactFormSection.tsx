@@ -19,6 +19,7 @@ import { LocalityCombobox } from "@/components/ui/locality-combobox";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { localitati } from "@/lib/data/localitati";
 import { toast } from "@/components/ui/use-toast";
+import { submitServiceRequest } from "@/app/actions/contact";
 
 const LOCALITY_OPTIONS = [
   ...[...localitati]
@@ -67,14 +68,21 @@ export function ContactFormSection() {
   }, [preselectedCity, setValue]);
 
   const onSubmit = async (data: FormData) => {
-    console.log("Contact form submission:", data);
-    await new Promise((r) => setTimeout(r, 800));
-    reset();
-    toast({
-      title: "Mesaj trimis cu succes!",
-      description: "Un specialist te va contacta în maxim 24 de ore.",
-      variant: "success",
-    });
+    const result = await submitServiceRequest(data);
+    if (result.success) {
+      reset();
+      toast({
+        title: "Solicitarea a fost trimisă!",
+        description: "Te contactăm în maxim 24 de ore.",
+        variant: "success",
+      });
+    } else {
+      toast({
+        title: "Eroare la trimitere",
+        description: result.error ?? "Încearcă din nou sau sună-ne direct.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
