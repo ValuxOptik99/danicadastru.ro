@@ -6,6 +6,8 @@ import { ServicesSection } from "@/components/sections/ServicesSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { LocationsTeaserSection } from "@/components/sections/LocationsTeaserSection";
 import { AncpiSection } from "@/components/sections/AncpiSection";
+import { ReviewsSection } from "@/components/sections/ReviewsSection";
+import { ReviewSchema } from "@/components/seo/ReviewSchema";
 import { ContactFormSection } from "@/components/sections/ContactFormSection";
 import { buildPageMetadata } from "@/lib/seo";
 
@@ -45,11 +47,13 @@ export default function HomePage() {
       <StatsBar />
       <ServicesSection />
       <ProjectsSection />
+      <ReviewsSection />
       <LocationsTeaserSection />
       <AncpiSection />
       <Suspense fallback={null}>
         <ContactFormSection />
       </Suspense>
+      <ReviewSchema />
     </>
   );
 }
