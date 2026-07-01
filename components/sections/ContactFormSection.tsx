@@ -15,8 +15,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { LocalityCombobox } from "@/components/ui/locality-combobox";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { counties } from "@/lib/data/counties";
+
+const LOCALITY_OPTIONS = counties.map((c) => ({ value: c.slug, label: c.name }));
 import { toast } from "@/components/ui/use-toast";
 
 const schema = z.object({
@@ -171,14 +174,12 @@ export function ContactFormSection() {
                     name="localitate"
                     control={control}
                     render={({ field }) => (
-                      <Select onValueChange={field.onChange} value={field.value}>
-                        <SelectTrigger><SelectValue placeholder="Alege localitatea" /></SelectTrigger>
-                        <SelectContent>
-                          {counties.map((c) => (
-                            <SelectItem key={c.slug} value={c.slug}>{c.name}</SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
+                      <LocalityCombobox
+                        value={field.value ?? ""}
+                        onChange={field.onChange}
+                        options={LOCALITY_OPTIONS}
+                        placeholder="Alege localitatea"
+                      />
                     )}
                   />
                   {errors.localitate && <p className="mt-1 text-xs text-red-500">{errors.localitate.message}</p>}

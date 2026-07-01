@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, ChevronDown, Home, Hammer, Building2, PencilRuler, Scale, ShieldCheck } from "lucide-react";
+import { Menu, X, ChevronDown, Phone, Home, Hammer, Building2, PencilRuler, Scale, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -29,12 +29,27 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    return () => { if (closeTimer.current) clearTimeout(closeTimer.current); };
+  }, []);
+
+  const openServices = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setServicesOpen(true);
+  };
+
+  const closeServices = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setServicesOpen(false), 250);
+  };
 
   return (
     <>
@@ -74,8 +89,8 @@ export function Navbar() {
                 <div
                   key={link.label}
                   className="relative group"
-                  onMouseEnter={() => setServicesOpen(true)}
-                  onMouseLeave={() => setServicesOpen(false)}
+                  onMouseEnter={openServices}
+                  onMouseLeave={closeServices}
                 >
                   <button
                     className={cn(
@@ -90,13 +105,16 @@ export function Navbar() {
                   </button>
 
                   <div
+                    onMouseEnter={openServices}
+                    onMouseLeave={closeServices}
                     className={cn(
-                      "absolute top-full left-0 mt-2 w-72 rounded-2xl border border-[#E5E9F2] bg-white shadow-xl p-2 transition-all duration-200 origin-top",
+                      "absolute top-full left-0 pt-2 w-72 transition-all duration-200 origin-top",
                       servicesOpen
                         ? "opacity-100 scale-100 pointer-events-auto"
                         : "opacity-0 scale-95 pointer-events-none"
                     )}
                   >
+                  <div className="rounded-2xl border border-[#E5E9F2] bg-white shadow-xl p-2">
                     {servicesMenu.map(({ href, label, Icon }) => (
                       <Link
                         key={href}
@@ -117,6 +135,7 @@ export function Navbar() {
                       Toate serviciile →
                     </Link>
                   </div>
+                  </div>
                 </div>
               ) : (
                 <Link
@@ -135,24 +154,46 @@ export function Navbar() {
             )}
           </nav>
 
-          {/* CTA */}
-          <div className="hidden lg:block">
+          {/* CTA + phone — desktop */}
+          <div className="hidden lg:flex items-center gap-3">
+            <a
+              href="tel:0770556677"
+              className={cn(
+                "flex items-center gap-2 text-sm font-semibold transition-colors",
+                scrolled ? "text-navy-ink hover:text-brand-violet" : "text-white/90 hover:text-white"
+              )}
+            >
+              <Phone className="h-4 w-4 text-brand-cyan" />
+              0770 55 66 77
+            </a>
             <Button asChild size="default">
               <Link href="/contact">Solicită Ofertă</Link>
             </Button>
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            className={cn(
-              "lg:hidden p-2 rounded-lg transition-colors",
-              scrolled ? "text-navy-ink hover:bg-bg-muted" : "text-white hover:bg-white/10"
-            )}
-            onClick={() => setMobileOpen(true)}
-            aria-label="Deschide meniul"
-          >
-            <Menu className="h-6 w-6" />
-          </button>
+          {/* Mobile: phone icon + hamburger */}
+          <div className="flex items-center gap-2 lg:hidden">
+            <a
+              href="tel:0770556677"
+              aria-label="Sună la 0770 55 66 77"
+              className={cn(
+                "flex h-10 w-10 items-center justify-center rounded-full transition-colors",
+                scrolled ? "bg-brand-cyan/10 text-brand-cyan hover:bg-brand-cyan/20" : "bg-white/10 text-white hover:bg-white/20"
+              )}
+            >
+              <Phone className="h-5 w-5" />
+            </a>
+            <button
+              className={cn(
+                "p-2 rounded-lg transition-colors",
+                scrolled ? "text-navy-ink hover:bg-bg-muted" : "text-white hover:bg-white/10"
+              )}
+              onClick={() => setMobileOpen(true)}
+              aria-label="Deschide meniul"
+            >
+              <Menu className="h-6 w-6" />
+            </button>
+          </div>
         </div>
       </header>
 
