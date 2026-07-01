@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, ChevronDown, Phone, Home, Hammer, Building2, PencilRuler, Scale, ShieldCheck } from "lucide-react";
+import { Menu, X, ChevronDown, Phone, Home, Hammer, Building2, PencilRuler, Scale, ShieldCheck, FileCheck2, Zap, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -14,6 +14,12 @@ const servicesMenu = [
   { href: "/servicii/arhitecti-proiectanti",  label: "Arhitecți",             Icon: PencilRuler },
   { href: "/servicii/notari-avocati",         label: "Notari & Avocați",      Icon: Scale       },
   { href: "/servicii/due-diligence",          label: "Due Diligence",         Icon: ShieldCheck },
+];
+
+const certificatesMenu = [
+  { href: "/servicii/certificat-edificare",  label: "Certificat Edificare",  Icon: FileCheck2  },
+  { href: "/servicii/certificat-energetic",  label: "Certificat Energetic",  Icon: Zap         },
+  { href: "/servicii/certificat-urbanism",   label: "Certificat Urbanism",   Icon: FileText    },
 ];
 
 const navLinks = [
@@ -108,32 +114,59 @@ export function Navbar() {
                     onMouseEnter={openServices}
                     onMouseLeave={closeServices}
                     className={cn(
-                      "absolute top-full left-0 pt-2 w-72 transition-all duration-200 origin-top",
+                      "absolute top-full left-0 pt-2 w-[540px] transition-all duration-200 origin-top",
                       servicesOpen
                         ? "opacity-100 scale-100 pointer-events-auto"
                         : "opacity-0 scale-95 pointer-events-none"
                     )}
                   >
-                  <div className="rounded-2xl border border-[#E5E9F2] bg-white shadow-xl p-2">
-                    {servicesMenu.map(({ href, label, Icon }) => (
-                      <Link
-                        key={href}
-                        href={href}
-                        className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-navy-ink hover:bg-bg-muted transition-colors"
-                      >
-                        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-cyan/10">
-                          <Icon className="h-4 w-4 text-brand-cyan" />
-                        </div>
-                        {label}
-                      </Link>
-                    ))}
-                    <div className="mx-3 my-1.5 h-px bg-[#E5E9F2]" />
-                    <Link
-                      href="/servicii"
-                      className="flex items-center justify-center rounded-xl px-3 py-2 text-xs font-semibold uppercase tracking-wider text-brand-cyan hover:bg-brand-cyan/5 transition-colors"
-                    >
-                      Toate serviciile →
-                    </Link>
+                  <div className="rounded-2xl border border-[#E5E9F2] bg-white shadow-xl p-3">
+                    <div className="grid grid-cols-2 gap-x-2">
+                      {/* Left column — persona services */}
+                      <div>
+                        <p className="px-3 pb-1 pt-1 text-[9px] font-bold uppercase tracking-widest text-text-muted">
+                          Servicii
+                        </p>
+                        {servicesMenu.map(({ href, label, Icon }) => (
+                          <Link
+                            key={href}
+                            href={href}
+                            className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm text-navy-ink hover:bg-bg-muted transition-colors"
+                          >
+                            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-brand-cyan/10">
+                              <Icon className="h-3.5 w-3.5 text-brand-cyan" />
+                            </div>
+                            {label}
+                          </Link>
+                        ))}
+                      </div>
+
+                      {/* Right column — certificates */}
+                      <div className="border-l border-[#E5E9F2] pl-2">
+                        <p className="px-3 pb-1 pt-1 text-[9px] font-bold uppercase tracking-widest text-text-muted">
+                          Certificate & Documentații
+                        </p>
+                        {certificatesMenu.map(({ href, label, Icon }) => (
+                          <Link
+                            key={href}
+                            href={href}
+                            className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm text-navy-ink hover:bg-bg-muted transition-colors"
+                          >
+                            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-brand-violet/10">
+                              <Icon className="h-3.5 w-3.5 text-brand-violet" />
+                            </div>
+                            {label}
+                          </Link>
+                        ))}
+                        <div className="mx-3 my-1.5 h-px bg-[#E5E9F2]" />
+                        <Link
+                          href="/servicii"
+                          className="flex items-center justify-center rounded-xl px-3 py-2 text-xs font-semibold uppercase tracking-wider text-brand-cyan hover:bg-brand-cyan/5 transition-colors"
+                        >
+                          Toate serviciile →
+                        </Link>
+                      </div>
+                    </div>
                   </div>
                   </div>
                 </div>
@@ -232,6 +265,23 @@ export function Navbar() {
                   className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-navy-ink hover:bg-bg-muted"
                 >
                   <Icon className="h-4 w-4 text-brand-cyan" />
+                  {label}
+                </Link>
+              ))}
+              <div className="my-2 h-px bg-[#E5E9F2]" />
+
+              {/* Certificates section */}
+              <p className="px-3 py-2 text-xs font-semibold uppercase tracking-widest text-text-muted mb-1">
+                Certificate & Documentații
+              </p>
+              {certificatesMenu.map(({ href, label, Icon }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-navy-ink hover:bg-bg-muted"
+                >
+                  <Icon className="h-4 w-4 text-brand-violet" />
                   {label}
                 </Link>
               ))}

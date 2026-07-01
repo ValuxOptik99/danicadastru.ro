@@ -11,6 +11,7 @@ import {
   ScanLine, Layers, Grid3x3, HardHat,
   Users, Gavel, AlertTriangle, Calculator,
   Scissors, Combine, RefreshCcw,
+  Store, CheckCircle2, Zap,
 } from "lucide-react";
 import {
   Accordion,
@@ -27,6 +28,7 @@ const iconMap: Record<string, React.ElementType> = {
   ScanLine, Layers, Grid3x3, HardHat,
   Users, Gavel, AlertTriangle, Calculator,
   Scissors, Combine, RefreshCcw,
+  Store, CheckCircle2, Zap,
 };
 
 const accentMap = {
@@ -50,6 +52,7 @@ export interface ServiceItem {
   title: string;
   description: string;
   bullets: string[];
+  href?: string;
 }
 
 export interface ServicePageData {
@@ -204,6 +207,14 @@ export function ServicePageLayout(props: ServicePageData) {
                       </li>
                     ))}
                   </ul>
+                  {svc.href && (
+                    <Link
+                      href={svc.href}
+                      className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-brand-cyan hover:gap-2 transition-all"
+                    >
+                      Află mai mult <ArrowRight className="h-3 w-3" />
+                    </Link>
+                  )}
                 </motion.div>
               );
             })}

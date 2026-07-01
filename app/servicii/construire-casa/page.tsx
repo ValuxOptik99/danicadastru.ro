@@ -53,6 +53,7 @@ const data: ServicePageData = {
       title: "Certificat de edificare",
       description: "Documentul tehnic care confirmă că construcția corespunde autorizației. Necesar pentru intabulare finală.",
       bullets: ["Verificare conformitate", "Documentație ANCPI", "Depunere OCPI"],
+      href: "/servicii/certificat-edificare",
     },
   ],
   processSteps: [
