@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { ShieldCheck, Zap, MapPinned, MapPin, Phone, Mail, ExternalLink } from "lucide-react";
+import { ShieldCheck, Zap, MapPin, Phone, Mail, ExternalLink } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -17,10 +17,15 @@ import {
 } from "@/components/ui/select";
 import { LocalityCombobox } from "@/components/ui/locality-combobox";
 import { SectionHeading } from "@/components/shared/SectionHeading";
-import { counties } from "@/lib/data/counties";
-
-const LOCALITY_OPTIONS = counties.map((c) => ({ value: c.slug, label: c.name }));
+import { localitati } from "@/lib/data/localitati";
 import { toast } from "@/components/ui/use-toast";
+
+const LOCALITY_OPTIONS = [
+  ...[...localitati]
+    .sort((a, b) => a.name.localeCompare(b.name, "ro"))
+    .map((l) => ({ value: l.slug, label: l.name })),
+  { value: "alta-localitate", label: "Altă localitate" },
+];
 
 const schema = z.object({
   numeComplet: z.string().min(2, "Numele trebuie să aibă cel puțin 2 caractere"),
@@ -37,7 +42,7 @@ type FormData = z.infer<typeof schema>;
 const trustPoints = [
   { icon: ShieldCheck, title: "Certificare ANCPI",    sub: "Ingineri autorizați Clasa A și B" },
   { icon: Zap,         title: "Răspuns Rapid",         sub: "Procesare în maxim 24 de ore" },
-  { icon: MapPinned,   title: "Acoperire Națională",   sub: "Toate reședințele de județ" },
+  { icon: MapPin,      title: "Acoperire Regională",   sub: "Dobrogea și la cerere la nivel național" },
 ];
 
 const MAPS_URL = "https://www.google.com/maps/dir/?api=1&destination=43.8138924,28.5824559";
@@ -56,7 +61,7 @@ export function ContactFormSection() {
 
   useEffect(() => {
     if (preselectedCity) {
-      const match = counties.find((c) => c.slug === preselectedCity);
+      const match = localitati.find((l) => l.slug === preselectedCity);
       if (match) setValue("localitate", match.slug);
     }
   }, [preselectedCity, setValue]);

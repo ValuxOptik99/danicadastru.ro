@@ -24,9 +24,9 @@ export default function ProiectePage() {
             Proiectele Noastre
           </h1>
           <p className="mx-auto max-w-xl text-white/60 text-lg">
-            Peste 3.000 de lucrări finalizate în toată România — de la
-            apartamente individuale la ansambluri rezidențiale de 186 unități
-            și hoteluri de 5 stele.
+            Peste 3.000 de lucrări finalizate — preponderent în Dobrogea, cu
+            proiecte și în alte județe, la cerere. De la apartamente individuale
+            la ansambluri rezidențiale de 186 unități și hoteluri de 5 stele.
           </p>
         </div>
       </section>

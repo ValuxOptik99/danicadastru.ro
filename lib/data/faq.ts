@@ -133,7 +133,7 @@ export const faqCategories: FAQCategory[] = [
     description: "Ce să verifici și de ce contează experiența atunci când îți alegi inginerul autorizat.",
     items: [
       { id: 36, question: "Cum aleg o firmă de cadastru?", answer: "Verifică experiența, autorizările și recenziile clienților. Atenție mare cu cine lucrezi — un preț mai mic nu înseamnă neapărat documentații complete și corecte. La DANI Cadastru am rectificat până în prezent aproximativ 250 de documentații cadastrale realizate greșit de către alte persoane autorizate." },
-      { id: 51, question: "De ce să colaborez cu DANI Cadastru?", answer: "Pentru documentații corecte și complete, timp economisit și reducerea riscurilor administrative. Inginer autorizat ANCPI, sediu în Mangalia, acoperire în toată România, răspuns rapid pe WhatsApp." },
+      { id: 51, question: "De ce să colaborez cu DANI Cadastru?", answer: "Pentru documentații corecte și complete, timp economisit și reducerea riscurilor administrative. Inginer autorizat ANCPI, sediu în Mangalia, acoperire în județul Constanța și Dobrogea (proiecte în toată țara la cerere), răspuns rapid pe WhatsApp." },
     ],
   },
 ];

@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | DANI Cadastru",
   },
   description:
-    "Servicii profesionale de cadastru, intabulare, topografie inginerească și scanare laser 3D în toată România. Autorizat ANCPI, precizie milimetrică garantată.",
+    "Servicii profesionale de cadastru, intabulare și topografie inginerească în județul Constanța și Dobrogea. Autorizat ANCPI clasa A și B, precizie milimetrică garantată.",
   keywords: [
     "cadastru",
     "intabulare",
@@ -77,7 +77,7 @@ const jsonLd = {
   "@type": "LocalBusiness",
   name: "DANI Cadastru",
   description:
-    "Servicii profesionale de cadastru, intabulare, topografie inginerească și scanare laser 3D în toată România.",
+    "Servicii profesionale de cadastru, intabulare și topografie inginerească în județul Constanța și Dobrogea.",
   url: "https://danicadastru.ro",
   logo: "https://danicadastru.ro/logo/logo_dani.png",
   image: "https://danicadastru.ro/og-image.jpg",

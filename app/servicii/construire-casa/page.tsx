@@ -4,7 +4,7 @@ import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Topografie pentru Construire Casă",
-  description: "Servicii topografice pentru construirea unei case: ridicare topografică pentru autorizație, trasare casă pe teren, releveu, certificat de edificare. Acoperire în toată România.",
+  description: "Servicii topografice pentru construirea unei case: ridicare topografică pentru autorizație, trasare casă pe teren, releveu, certificat de edificare. Activi în județul Constanța și Dobrogea.",
   path: "/servicii/construire-casa",
 });
 

@@ -7,10 +7,10 @@ import { MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 
-const MAP_VIEWBOX = { width: 800, height: 554 };
+const MAP_VIEWBOX = { width: 500, height: 516 };
 
-const ROMANIA_PATH =
-  "M225.9,66.8 L259.9,43.4 L308.5,55.6 L359.0,55.9 L395.6,82.5 L422.3,65.9 L480.5,55.4 L499.9,30.0 L533.5,30.0 L557.4,40.6 L582.0,72.6 L606.8,118.8 L652.2,183.7 L654.7,231.5 L646.3,278.1 L660.4,327.8 L695.5,347.9 L732.5,335.2 L768.3,349.1 L770.0,377.2 L731.8,400.6 L708.0,390.4 L686.0,521.9 L639.8,510.5 L582.4,470.8 L489.8,496.2 L450.8,524.0 L335.3,518.2 L222.0,464.4 L207.3,445.4 L225.6,426.7 L206.1,413.4 L181.4,437.8 L135.6,406.2 L129.4,361.3 L81.5,335.6 L72.6,301.0 L30.0,258.1 L93.1,237.4 L140.6,163.6 L177.8,89.7 L225.9,66.8 Z";
+const DOBROGEA_PATH =
+  "M186.4,42.8 L246.4,30.0 L293.6,104.3 L466.4,124.8 L470.0,204.2 L335.5,227.3 L317.3,263.1 L304.5,329.7 L282.7,375.8 L280.9,401.5 L277.3,422.0 L273.6,465.5 L269.1,483.4 L199.1,486.0 L115.5,486.0 L53.6,429.6 L30.0,386.1 L40.9,334.9 L151.8,332.3 L168.2,245.2 L150.0,183.7 L171.8,119.7 L186.4,42.8 Z";
 
 type LabelAnchor = "right" | "left" | "top" | "bottom";
 
@@ -28,191 +28,195 @@ interface SecondaryCity {
 }
 
 const majorCities: MajorCity[] = [
-  { name: "Cluj-Napoca", x: 297.8, y: 187.9, anchor: "top"    },
-  { name: "Iași",        x: 609.7, y: 145.7, anchor: "right"  },
-  { name: "Timișoara",   x: 107.8, y: 299.4, anchor: "left"   },
-  { name: "București",   x: 492.8, y: 443.5, anchor: "bottom" },
-  { name: "Constanța",   x: 692.0, y: 471.1, anchor: "right"  },
-  { name: "Brașov",      x: 453.4, y: 309.3, anchor: "right"  },
-  { name: "Craiova",     x: 311.2, y: 454.0, anchor: "left"   },
-  { name: "Galați",      x: 646.0, y: 333.5, anchor: "right"  },
-  { name: "Oradea",      x: 163.7, y: 155.1, anchor: "left"   },
-  { name: "Sibiu",       x: 339.4, y: 294.0, anchor: "left"   },
-  { name: "Baia Mare",   x: 294.3, y: 91.1,  anchor: "top"    },
-  { name: "Suceava",     x: 504.8, y: 92.0,  anchor: "top"    },
+  { name: "Constanța", x: 278.8, y: 375.0, anchor: "right" },
+  { name: "Mangalia",  x: 268.5, y: 466.4, anchor: "right" },
+  { name: "Năvodari",  x: 273.5, y: 325.5, anchor: "right" },
+  { name: "Medgidia",  x: 213.1, y: 355.6, anchor: "left"  },
+  { name: "Cernavodă", x: 168.6, y: 332.0, anchor: "left"  },
+  { name: "Hârșova",   x: 153.6, y: 244.3, anchor: "left"  },
 ];
 
 const secondaryCities: SecondaryCity[] = [
-  { name: "Arad",                  x: 116.3, y: 251.6 },
-  { name: "Târgu Mureș",           x: 371.6, y: 212.5 },
-  { name: "Bacău",                 x: 556.3, y: 210.2 },
-  { name: "Ploiești",              x: 486.0, y: 388.3 },
-  { name: "Pitești",               x: 395.8, y: 396.6 },
-  { name: "Drobeta-Turnu Severin", x: 221.9, y: 421.8 },
-  { name: "Tulcea",                x: 705.0, y: 362.8 },
-  { name: "Zalău",                 x: 236.0, y: 145.0 },
-  { name: "Bistrița",              x: 367.0, y: 152.0 },
-  { name: "Piatra Neamț",          x: 513.0, y: 175.0 },
-  { name: "Vaslui",                x: 619.0, y: 206.0 },
-  { name: "Focșani",               x: 577.0, y: 310.0 },
-  { name: "Buzău",                 x: 548.0, y: 371.0 },
-  { name: "Alba Iulia",            x: 294.0, y: 269.0 },
-  { name: "Deva",                  x: 242.0, y: 291.0 },
-  { name: "Miercurea Ciuc",        x: 468.0, y: 237.0 },
-  { name: "Râmnicu Vâlcea",        x: 357.0, y: 377.0 },
-  { name: "Reșița",                x: 163.0, y: 355.0 },
-  { name: "Alexandria",            x: 432.0, y: 501.0 },
-  { name: "Giurgiu",               x: 482.0, y: 510.0 },
+  { name: "Ovidiu",               x: 265.8, y: 351.1 },
+  { name: "Valu lui Traian",      x: 256.7, y: 376.7 },
+  { name: "Cumpăna",              x: 259.7, y: 389.5 },
+  { name: "Lumina",               x: 274.9, y: 346.8 },
+  { name: "Agigea",               x: 277.9, y: 398.1 },
+  { name: "Techirghiol",          x: 271.5, y: 406.3 },
+  { name: "Murfatlar",            x: 238.5, y: 372.4 },
+  { name: "Mihail Kogălniceanu",  x: 244.5, y: 325.5 },
+  { name: "Tuzla",                x: 277.9, y: 423.7 },
+  { name: "Costinești",           x: 277.9, y: 432.2 },
+  { name: "Corbu",                x: 283.9, y: 312.6 },
+  { name: "Limanu",               x: 259.7, y: 470.6 },
+  { name: "2 Mai",                x: 268.8, y: 474.9 },
+  { name: "Vama Veche",           x: 267.3, y: 483.4 },
+  { name: "Negru Vodă",           x: 199.1, y: 466.4 },
+  { name: "Cobadin",              x: 171.8, y: 423.7 },
+  { name: "Cogealac",             x: 265.8, y: 278.5 },
+  { name: "Adamclisi",            x: 156.7, y: 398.1 },
+  { name: "Ostrov",               x: 47.6,  y: 389.5 },
+  { name: "Băneasa",              x: 108.2, y: 402.3 },
+  { name: "Eforie",               x: 281.4, y: 404.3 },
+  { name: "Poarta Albă",          x: 232.4, y: 372.4 },
+  { name: "Castelu",              x: 214.2, y: 355.3 },
+  { name: "Topraisar",            x: 229.4, y: 436.5 },
 ];
 
 const LABEL_OFFSETS: Record<LabelAnchor, { dx: number; dy: number; transform: string }> = {
-  right:  { dx: 14,  dy: 0,   transform: "translate(0, -50%)" },
-  left:   { dx: -14, dy: 0,   transform: "translate(-100%, -50%)" },
-  top:    { dx: 0,   dy: -14, transform: "translate(-50%, -100%)" },
-  bottom: { dx: 0,   dy: 14,  transform: "translate(-50%, 0)" },
+  right:  { dx: 12,  dy: 0,   transform: "translate(0, -50%)"        },
+  left:   { dx: -12, dy: 0,   transform: "translate(-100%, -50%)"    },
+  top:    { dx: 0,   dy: -12, transform: "translate(-50%, -100%)"    },
+  bottom: { dx: 0,   dy: 12,  transform: "translate(-50%, 0)"        },
 };
 
 export function LocationsTeaserSection() {
-  const [hoveredCity, setHoveredCity] = useState<SecondaryCity | null>(null);
+  const [hovered, setHovered] = useState<SecondaryCity | null>(null);
 
   return (
     <section className="section-padding bg-bg-muted">
       <div className="container mx-auto px-4 lg:px-6">
         <SectionHeading
-          eyebrow="ACOPERIRE NAȚIONALĂ"
-          title="Operăm în Toată România"
-          subtitle="Echipa noastră deservește toate reședințele de județ, cu accent pe zonele metropolitane majore."
+          eyebrow="ZONE DESERVITE"
+          title="Prezenți în Toată Dobrogea"
+          subtitle="Acoperim județul Constanța și întreaga regiune Dobrogea, cu activitate constantă pe litoral și în interiorul județului. Pentru proiecte mari, lucrăm și în afara regiunii, la cerere."
         />
 
-        <div className="relative mx-auto mb-10 w-full max-w-3xl">
-          <svg
-            viewBox={`0 0 ${MAP_VIEWBOX.width} ${MAP_VIEWBOX.height}`}
-            className="h-auto w-full"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-label="Harta României cu orașele unde oferim servicii"
-            role="img"
-          >
-            <defs>
-              <linearGradient id="ro-fill" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#2563EB" stopOpacity="0.08" />
-                <stop offset="100%" stopColor="#8B5CF6" stopOpacity="0.06" />
-              </linearGradient>
-              <linearGradient id="ro-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#2563EB" />
-                <stop offset="50%" stopColor="#22D3EE" />
-                <stop offset="100%" stopColor="#8B5CF6" />
-              </linearGradient>
-            </defs>
+        <div className="mt-12 grid items-center gap-10 lg:grid-cols-2">
+          {/* MAP — portrait, max ~440px wide */}
+          <div className="relative mx-auto w-full max-w-[440px]">
+            <svg
+              viewBox={`0 0 ${MAP_VIEWBOX.width} ${MAP_VIEWBOX.height}`}
+              className="h-auto w-full"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-label="Harta Dobrogei cu localitățile deservite din județul Constanța"
+              role="img"
+            >
+              <defs>
+                <linearGradient id="dob-fill" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#2563EB" stopOpacity="0.08" />
+                  <stop offset="100%" stopColor="#8B5CF6" stopOpacity="0.06" />
+                </linearGradient>
+                <linearGradient id="dob-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%"   stopColor="#2563EB" />
+                  <stop offset="50%"  stopColor="#22D3EE" />
+                  <stop offset="100%" stopColor="#8B5CF6" />
+                </linearGradient>
+              </defs>
 
-            <path
-              d={ROMANIA_PATH}
-              fill="url(#ro-fill)"
-              stroke="url(#ro-stroke)"
-              strokeWidth="2"
-              strokeLinejoin="round"
-            />
+              <path
+                d={DOBROGEA_PATH}
+                fill="url(#dob-fill)"
+                stroke="url(#dob-stroke)"
+                strokeWidth="2"
+                strokeLinejoin="round"
+              />
 
-            {/* Secondary city pins — behind major cities */}
-            {secondaryCities.map((city) => (
-              <g
-                key={city.name}
-                className="cursor-pointer"
-                onMouseEnter={() => setHoveredCity(city)}
-                onMouseLeave={() => setHoveredCity(null)}
-              >
-                <circle cx={city.x} cy={city.y} r="14" fill="transparent" />
-                <circle cx={city.x} cy={city.y} r="8" fill="#22D3EE" fillOpacity="0.2" />
-                <circle cx={city.x} cy={city.y} r="4" fill="#22D3EE" />
-                <circle cx={city.x} cy={city.y} r="2" fill="#FFFFFF" />
-              </g>
-            ))}
-
-            {/* Major city pins — on top */}
-            {majorCities.map((city, i) => (
-              <g key={city.name}>
-                <motion.circle
-                  cx={city.x}
-                  cy={city.y}
-                  r="14"
-                  fill="#22D3EE"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: [0.4, 0, 0.4] }}
-                  transition={{ duration: 2.4, repeat: Infinity, delay: i * 0.3 }}
-                  style={{ transformOrigin: `${city.x}px ${city.y}px` }}
-                />
-                <motion.circle
-                  cx={city.x}
-                  cy={city.y}
-                  r="14"
-                  fill="none"
-                  stroke="#22D3EE"
-                  strokeWidth="1.5"
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: [0.6, 0], scale: [1, 2.2] }}
-                  transition={{ duration: 2.4, repeat: Infinity, delay: i * 0.3, ease: "easeOut" }}
-                  style={{ transformOrigin: `${city.x}px ${city.y}px` }}
-                />
-                <circle cx={city.x} cy={city.y} r="6" fill="#22D3EE" />
-                <circle cx={city.x} cy={city.y} r="3" fill="#FFFFFF" />
-              </g>
-            ))}
-          </svg>
-
-          {/* Labels overlay */}
-          <div className="pointer-events-none absolute inset-0">
-            {/* Major city labels — always visible */}
-            {majorCities.map((city, i) => {
-              const offset = LABEL_OFFSETS[city.anchor];
-              const leftPct = ((city.x + offset.dx) / MAP_VIEWBOX.width) * 100;
-              const topPct = ((city.y + offset.dy) / MAP_VIEWBOX.height) * 100;
-              return (
-                <motion.div
+              {/* Secondary pins — hover tooltip */}
+              {secondaryCities.map((city) => (
+                <g
                   key={city.name}
-                  initial={{ opacity: 0, y: 4 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.15 + i * 0.08 }}
-                  className="absolute"
-                  style={{ left: `${leftPct}%`, top: `${topPct}%`, transform: offset.transform }}
+                  className="cursor-pointer"
+                  onMouseEnter={() => setHovered(city)}
+                  onMouseLeave={() => setHovered(null)}
                 >
-                  <div className="flex items-center gap-1 whitespace-nowrap rounded-full bg-navy-900/95 px-2.5 py-1 text-[10px] font-semibold text-white shadow-lg backdrop-blur-sm sm:px-3 sm:py-1.5 sm:text-xs">
-                    <MapPin className="h-2.5 w-2.5 text-brand-cyan sm:h-3 sm:w-3" />
-                    {city.name}
+                  <circle cx={city.x} cy={city.y} r="10" fill="transparent" />
+                  <circle cx={city.x} cy={city.y} r="6"  fill="#22D3EE" fillOpacity="0.18" />
+                  <circle cx={city.x} cy={city.y} r="3.5" fill="#22D3EE" />
+                  <circle cx={city.x} cy={city.y} r="1.5" fill="#FFFFFF" />
+                </g>
+              ))}
+
+              {/* Major pins — pulsing */}
+              {majorCities.map((city, i) => (
+                <g key={city.name}>
+                  <motion.circle
+                    cx={city.x} cy={city.y} r="11" fill="#22D3EE"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: [0.35, 0, 0.35] }}
+                    transition={{ duration: 2.4, repeat: Infinity, delay: i * 0.3 }}
+                    style={{ transformOrigin: `${city.x}px ${city.y}px` }}
+                  />
+                  <circle cx={city.x} cy={city.y} r="5"   fill="#22D3EE" />
+                  <circle cx={city.x} cy={city.y} r="2.5" fill="#FFFFFF" />
+                </g>
+              ))}
+            </svg>
+
+            {/* Labels overlay — positioned absolutely over the SVG */}
+            <div className="pointer-events-none absolute inset-0">
+              {majorCities.map((city) => {
+                const o = LABEL_OFFSETS[city.anchor];
+                const left = ((city.x + o.dx) / MAP_VIEWBOX.width) * 100;
+                const top  = ((city.y + o.dy) / MAP_VIEWBOX.height) * 100;
+                return (
+                  <div
+                    key={city.name}
+                    className="absolute"
+                    style={{ left: `${left}%`, top: `${top}%`, transform: o.transform }}
+                  >
+                    <div className="flex items-center gap-1 whitespace-nowrap rounded-full bg-navy-900/95 px-2.5 py-1 text-[10px] font-semibold text-white shadow-lg backdrop-blur-sm">
+                      <MapPin className="h-2.5 w-2.5 text-brand-cyan" />
+                      {city.name}
+                    </div>
                   </div>
-                </motion.div>
-              );
-            })}
+                );
+              })}
 
-            {/* Secondary city hover tooltip */}
-            {hoveredCity && (
-              <motion.div
-                key={hoveredCity.name}
-                initial={{ opacity: 0, y: 4 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.15 }}
-                className="absolute"
-                style={{
-                  left: `${(hoveredCity.x / MAP_VIEWBOX.width) * 100}%`,
-                  top: `${((hoveredCity.y - 14) / MAP_VIEWBOX.height) * 100}%`,
-                  transform: "translate(-50%, -100%)",
-                }}
-              >
-                <div className="flex items-center gap-1 whitespace-nowrap rounded-full bg-navy-900 px-2.5 py-1 text-[10px] font-semibold text-white shadow-lg">
-                  <MapPin className="h-2.5 w-2.5 text-brand-cyan" />
-                  {hoveredCity.name}
+              {/* Hover tooltip */}
+              {hovered && (
+                <div
+                  className="absolute"
+                  style={{
+                    left: `${(hovered.x / MAP_VIEWBOX.width) * 100}%`,
+                    top: `${((hovered.y - 10) / MAP_VIEWBOX.height) * 100}%`,
+                    transform: "translate(-50%, -100%)",
+                  }}
+                >
+                  <div className="flex items-center gap-1 whitespace-nowrap rounded-full bg-navy-900 px-2.5 py-1 text-[10px] font-semibold text-white shadow-lg">
+                    <MapPin className="h-2.5 w-2.5 text-brand-cyan" />
+                    {hovered.name}
+                  </div>
                 </div>
-              </motion.div>
-            )}
+              )}
+            </div>
           </div>
-        </div>
 
-        <div className="flex justify-center">
-          <Button asChild variant="brand" size="lg" className="rounded-full">
-            <Link href="/localitati">
-              <MapPin className="mr-2 h-5 w-5" />
-              Vezi toate localitățile
-            </Link>
-          </Button>
+          {/* Text + CTA beside the map */}
+          <div>
+            <h3 className="text-2xl font-bold text-navy-ink lg:text-3xl" style={{ letterSpacing: "-0.01em" }}>
+              Cadastru și topografie în toată Dobrogea
+            </h3>
+            <p className="mt-4 text-base leading-relaxed text-text-muted">
+              De la stațiunile litoralului până în interiorul județului, echipa DANI
+              Cadastru este la dispoziția ta. Lucrăm constant în Constanța, Mangalia,
+              Năvodari, Medgidia, Cernavodă, Hârșova și zecile de localități din jur.
+            </p>
+
+            <ul className="mt-6 space-y-2.5 text-sm text-navy-ink">
+              <li className="flex items-center gap-2.5">
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand-cyan" />
+                Activitate constantă pe întreg litoralul
+              </li>
+              <li className="flex items-center gap-2.5">
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand-violet" />
+                Acoperire completă în interiorul județului
+              </li>
+              <li className="flex items-center gap-2.5">
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand-pink" />
+                Proiecte în afara Dobrogei, la cerere
+              </li>
+            </ul>
+
+            <div className="mt-8">
+              <Button asChild variant="brand" size="lg" className="rounded-full">
+                <Link href="/localitati">
+                  <MapPin className="mr-2 h-5 w-5" />
+                  Vezi toate localitățile deservite
+                </Link>
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     </section>

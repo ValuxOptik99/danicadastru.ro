@@ -1,156 +1,208 @@
-"use client";
-
-import { useState, useMemo } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import { MapPin, Check, ArrowRight, Search } from "lucide-react";
+import { MapPin, Check, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { counties } from "@/lib/data/counties";
-import { cn } from "@/lib/utils";
+import { localitati, clusters } from "@/lib/data/localitati";
 
-const serviciiDisponibile = [
-  "Cadastru apartament",
-  "Cadastru casă",
-  "Cadastru teren",
-  "Intabulare",
-  "Dezmembrare",
-  "Alipire",
-  "Actualizare informații",
-  "Plan de amplasament",
+const serviciiOferte = [
+  "Cadastru & Intabulare",
+  "Prima înregistrare imobil",
+  "Actualizare construcții",
+  "Dezmembrare & Alipire",
+  "Trasări topografice",
+  "Relevee construcții",
+  "Planuri topografice",
+  "Documentații ANCPI/OCPI",
 ];
 
-export function LocalitatiContent() {
-  const searchParams = useSearchParams();
-  const initialSlug = searchParams.get("oras") ?? counties[0].slug;
-  const [selectedSlug, setSelectedSlug] = useState(initialSlug);
-  const [search, setSearch] = useState("");
+const clusterAccent: Record<string, { dot: string; border: string; bg: string }> = {
+  "litoral-sud":   { dot: "bg-brand-cyan",   border: "border-brand-cyan/30",   bg: "bg-brand-cyan/5"   },
+  "litoral-nord":  { dot: "bg-brand-cyan",   border: "border-brand-cyan/20",   bg: "bg-brand-cyan/4"   },
+  "metropolitan":  { dot: "bg-brand-violet", border: "border-brand-violet/30", bg: "bg-brand-violet/5" },
+  "vest-centru":   { dot: "bg-brand-pink",   border: "border-brand-pink/25",   bg: "bg-brand-pink/5"   },
+  "nord-judet":    { dot: "bg-brand-violet", border: "border-brand-violet/20", bg: "bg-brand-violet/4" },
+};
 
-  const filtered = useMemo(
-    () =>
-      counties.filter(
-        (c) =>
-          c.name.toLowerCase().includes(search.toLowerCase()) ||
-          c.county.toLowerCase().includes(search.toLowerCase())
-      ),
-    [search]
+const WA_URL =
+  "https://wa.me/40770556677?text=Bun%C4%83!%20Am%20o%20%C3%AEntrebare%20despre%20cadastru.";
+
+export function LocalitatiContent() {
+  const sorted = [...localitati].sort((a, b) =>
+    a.name.localeCompare(b.name, "ro")
   );
 
-  const selectedCity = counties.find((c) => c.slug === selectedSlug) ?? counties[0];
-
   return (
-    <section className="bg-bg-muted py-12">
-      <div className="container mx-auto px-4 lg:px-6">
-        <div className="flex flex-col gap-8 lg:flex-row">
-          {/* Sidebar */}
-          <aside className="lg:w-64 xl:w-72 flex-shrink-0">
-            <div className="sticky top-24 rounded-2xl border border-[#E5E9F2] bg-white p-4 card-shadow">
-              <div className="relative mb-3">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-text-muted" />
-                <Input
-                  placeholder="Caută localitate..."
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                  className="pl-9"
-                />
+    <>
+      {/* REGIONAL CLUSTERS */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 lg:px-6">
+          <div className="mb-10 text-center">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-brand-cyan">
+              ZONE REGIONALE
+            </p>
+            <h2
+              className="text-2xl font-extrabold text-navy-ink md:text-3xl"
+              style={{ letterSpacing: "-0.02em" }}
+            >
+              Cinci zone de activitate în Dobrogea
+            </h2>
+            <p className="mt-3 mx-auto max-w-xl text-text-muted">
+              Organizăm serviciile pe zone geografice pentru o mai bună acoperire. Indiferent de localitate, un inginer autorizat vine la proprietatea ta.
+            </p>
+          </div>
+
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {clusters.map((cluster) => {
+              const accent = clusterAccent[cluster.slug] ?? clusterAccent["metropolitan"];
+              return (
+                <div
+                  key={cluster.slug}
+                  className={`rounded-2xl border p-5 card-shadow ${accent.border} ${accent.bg}`}
+                >
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className={`h-2.5 w-2.5 rounded-full shrink-0 ${accent.dot}`} />
+                    <h3 className="font-bold text-navy-ink text-base">{cluster.title}</h3>
+                  </div>
+                  <p className="text-sm text-text-muted mb-4 leading-relaxed">
+                    {cluster.description}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {cluster.localities.map((loc) => (
+                      <span
+                        key={loc}
+                        className="inline-flex items-center rounded-full bg-white border border-[#E5E9F2] px-2.5 py-0.5 text-xs font-medium text-navy-ink shadow-sm"
+                      >
+                        {loc}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+
+            {/* National card */}
+            <div className="rounded-2xl border border-[#E5E9F2] bg-bg-muted p-5 card-shadow">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="h-2.5 w-2.5 rounded-full shrink-0 bg-brand-magenta" />
+                <h3 className="font-bold text-navy-ink text-base">Proiecte Naționale</h3>
               </div>
-              <div className="max-h-[calc(100vh-220px)] overflow-y-auto space-y-0.5 pr-1">
-                {filtered.map((county) => (
-                  <button
-                    key={county.slug}
-                    onClick={() => setSelectedSlug(county.slug)}
-                    className={cn(
-                      "flex w-full items-center gap-2 rounded-xl px-3 py-2 text-left text-sm transition-colors",
-                      selectedSlug === county.slug
-                        ? "gradient-cta text-white font-semibold"
-                        : "text-navy-ink hover:bg-bg-muted"
-                    )}
+              <p className="text-sm text-text-muted mb-4 leading-relaxed">
+                La cerere, realizăm lucrări cadastrale și în afara Dobrogei — oriunde în România.
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {["București", "Ilfov", "Tulcea", "Timișoara", "Alte județe"].map((loc) => (
+                  <span
+                    key={loc}
+                    className="inline-flex items-center rounded-full bg-white border border-[#E5E9F2] px-2.5 py-0.5 text-xs font-medium text-navy-ink shadow-sm"
                   >
-                    <MapPin className={cn("h-3.5 w-3.5 flex-shrink-0", selectedSlug === county.slug ? "text-white" : "text-brand-cyan")} />
-                    <span>{county.name}</span>
-                  </button>
+                    {loc}
+                  </span>
                 ))}
-                {filtered.length === 0 && (
-                  <p className="py-4 text-center text-sm text-text-muted">
-                    Nicio localitate găsită.
-                  </p>
-                )}
               </div>
             </div>
-          </aside>
-
-          {/* Main content */}
-          <main className="flex-1 min-w-0">
-            <div className="rounded-2xl border border-[#E5E9F2] bg-white p-6 md:p-8 card-shadow">
-              <div className="mb-6 flex flex-wrap items-start gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl gradient-cta flex-shrink-0">
-                  <MapPin className="h-5 w-5 text-white" />
-                </div>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-brand-cyan">
-                    {selectedCity.region} · Județul {selectedCity.county}
-                  </p>
-                  <h2
-                    className="text-2xl font-bold text-navy-ink md:text-3xl"
-                    style={{ letterSpacing: "-0.02em" }}
-                  >
-                    Servicii de Cadastru și Intabulare în {selectedCity.name}
-                  </h2>
-                </div>
-              </div>
-
-              <div className="prose prose-sm max-w-none space-y-4 text-text-muted leading-relaxed mb-6">
-                <p>
-                  <strong className="text-navy-ink">DANI</strong> oferă servicii complete de cadastru și intabulare în{" "}
-                  <strong className="text-navy-ink">{selectedCity.name}</strong>, reședința județului{" "}
-                  <strong className="text-navy-ink">{selectedCity.county}</strong>. Echipa noastră de specialiști autorizați ANCPI
-                  lucrează direct cu OCPI {selectedCity.ocpi} pentru a asigura procesarea rapidă a documentațiilor tehnice.
-                  Indiferent dacă ai nevoie de înregistrare apartament, dezmembrare teren sau actualizare informații cadastrale
-                  în {selectedCity.name}, avem expertiza necesară.
-                </p>
-                <p>
-                  Acoperim toate tipurile de imobile: apartamente în zone centrale precum{" "}
-                  <em>{selectedCity.landmark}</em>, case individuale, terenuri agricole și extravilane,
-                  precum și ansambluri comerciale. Topografii noștri folosesc echipamente GNSS de ultimă generație
-                  pentru măsurători cu precizie milimetrică, asigurând documente conforme cu cerințele OCPI{" "}
-                  {selectedCity.ocpi}.
-                </p>
-                <p>
-                  Colaborăm cu notari, avocați și primării din {selectedCity.name} pentru a oferi un serviciu
-                  integrat — de la prima consultație până la înscrierea în Cartea Funciară. Timpul mediu de procesare
-                  în {selectedCity.name} este de 5-10 zile lucrătoare, în funcție de tipul documentației solicitate.
-                </p>
-              </div>
-
-              <div className="mb-8 rounded-2xl bg-bg-muted p-5">
-                <h3 className="mb-4 font-semibold text-navy-ink">
-                  Servicii disponibile în {selectedCity.name}:
-                </h3>
-                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-                  {serviciiDisponibile.map((serviciu) => (
-                    <div key={serviciu} className="flex items-center gap-2 text-sm text-navy-ink">
-                      <Check className="h-4 w-4 flex-shrink-0 text-brand-cyan" />
-                      {serviciu}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex flex-wrap gap-3">
-                <Button asChild size="default">
-                  <Link href={`/contact?oras=${selectedCity.slug}`}>
-                    Solicită ofertă pentru {selectedCity.name}
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-                <Button asChild variant="secondary" size="default">
-                  <Link href="/contact">Contact general</Link>
-                </Button>
-              </div>
-            </div>
-          </main>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* FULL ALPHABETICAL LIST */}
+      <section className="py-16 bg-bg-muted">
+        <div className="container mx-auto px-4 lg:px-6">
+          <div className="mb-8 text-center">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-brand-cyan">
+              LISTA COMPLETĂ
+            </p>
+            <h2
+              className="text-2xl font-extrabold text-navy-ink md:text-3xl"
+              style={{ letterSpacing: "-0.02em" }}
+            >
+              Toate Localitățile Deservite — Județul Constanța
+            </h2>
+            <p className="mt-2 text-text-muted">
+              {localitati.length} localități din județul Constanța, în ordine alfabetică
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-[#E5E9F2] bg-white p-6 md:p-8 card-shadow">
+            <div className="flex flex-wrap gap-2">
+              {sorted.map((loc) => (
+                <span
+                  key={loc.slug}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[#E5E9F2] px-3 py-1.5 text-sm font-medium text-navy-ink hover:border-brand-cyan/40 hover:bg-brand-cyan/5 transition-colors"
+                >
+                  <MapPin className="h-3 w-3 text-brand-cyan shrink-0" />
+                  {loc.name}
+                </span>
+              ))}
+            </div>
+
+            <p className="mt-6 text-xs text-text-muted border-t border-[#E5E9F2] pt-4">
+              Localități deservite în județul Constanța: Constanța, Năvodari, Ovidiu, Valu lui Traian, Cumpăna, Lumina, Agigea, Eforie, Techirghiol, Mangalia, Medgidia, Murfatlar, Mihail Kogălniceanu, Tuzla, Costinești, Corbu, Cernavodă, Hârșova, Negru Vodă și alte {localitati.length - 19} localități din Dobrogea.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES REMINDER */}
+      <section className="py-16 bg-navy-900 relative overflow-hidden">
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{ background: "radial-gradient(ellipse 50% 80% at 0% 50%, rgba(34,211,238,0.06) 0%, transparent 60%)" }}
+        />
+        <div className="container mx-auto px-4 lg:px-6 relative">
+          <div className="grid gap-10 lg:grid-cols-2 items-center">
+            <div>
+              <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-brand-cyan">
+                SERVICII DISPONIBILE
+              </p>
+              <h2
+                className="text-2xl font-extrabold text-white md:text-3xl"
+                style={{ letterSpacing: "-0.02em" }}
+              >
+                Aceleași servicii în fiecare localitate
+              </h2>
+              <p className="mt-3 text-white/60 leading-relaxed">
+                Indiferent de localitate, oferim documentație completă conform standardelor ANCPI și OCPI Constanța, semnată de ingineri autorizați clasa A și B.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+              {serviciiOferte.map((serviciu) => (
+                <div key={serviciu} className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3">
+                  <Check className="h-4 w-4 shrink-0 text-brand-cyan" />
+                  <span className="text-sm font-medium text-white">{serviciu}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 lg:px-6 text-center">
+          <h2
+            className="text-2xl font-extrabold text-navy-ink md:text-3xl"
+            style={{ letterSpacing: "-0.02em" }}
+          >
+            Nu găsești localitatea ta?
+          </h2>
+          <p className="mt-3 mx-auto max-w-lg text-text-muted">
+            Contactează-ne — lucrăm în toată Dobrogea și, la cerere, în orice localitate din România.
+          </p>
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+            <Button asChild size="lg">
+              <Link href="/contact">Solicită ofertă gratuită</Link>
+            </Button>
+            <a
+              href={WA_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-[#E5E9F2] bg-bg-muted px-6 py-3 text-sm font-semibold text-navy-ink transition hover:border-brand-cyan/40 hover:bg-brand-cyan/5"
+            >
+              <Phone className="h-4 w-4 text-brand-cyan" />
+              Scrie pe WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

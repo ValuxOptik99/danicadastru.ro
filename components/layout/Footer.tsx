@@ -3,7 +3,13 @@ import Image from "next/image";
 import { Facebook, Linkedin, Instagram, MapPin, Phone, Mail } from "lucide-react";
 import { CookieSettingsButton } from "@/components/cookies/CookieSettingsButton";
 
-const majorCities = ["București", "Cluj-Napoca", "Timișoara"];
+const zoneDeservite = [
+  "Constanța",
+  "Mangalia",
+  "Năvodari",
+  "Medgidia",
+  "Eforie",
+];
 
 export function Footer() {
   return (
@@ -23,7 +29,7 @@ export function Footer() {
               <Image src="/logo/logo_dani_scris.png" alt="DANI" width={891} height={306} className="h-6 w-auto brightness-0 invert opacity-90" />
             </Link>
             <p className="text-sm leading-relaxed mb-4">
-              Servicii complete de cadastru, intabulare și topografie. Inginer autorizat ANCPI cu sediul în Mangalia, jud. Constanța. Acoperire în toată țara.
+              Servicii complete de cadastru, intabulare și topografie. Inginer autorizat ANCPI cu sediul în Mangalia, jud. Constanța. Acoperire în toată Dobrogea și, la cerere, la nivel național.
             </p>
             <ul className="mb-6 space-y-2 text-sm">
               <li className="flex items-start gap-2">
@@ -104,16 +110,21 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Rețea */}
+          {/* Zone Deservite */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-widest text-white mb-4">
-              Rețea
+              Zone Deservite
             </h3>
             <ul className="space-y-2.5">
-              {majorCities.map((city) => (
-                <li key={city} className="flex items-center gap-2">
-                  <MapPin className="h-3.5 w-3.5 text-brand-cyan flex-shrink-0" />
-                  <span className="text-sm">{city}</span>
+              {zoneDeservite.map((city) => (
+                <li key={city}>
+                  <Link
+                    href="/localitati"
+                    className="flex items-center gap-2 text-sm hover:text-white transition-colors"
+                  >
+                    <MapPin className="h-3.5 w-3.5 text-brand-cyan flex-shrink-0" />
+                    {city}
+                  </Link>
                 </li>
               ))}
               <li>
@@ -121,7 +132,7 @@ export function Footer() {
                   href="/localitati"
                   className="text-sm text-brand-cyan hover:text-brand-cyan/80 transition-colors"
                 >
-                  + Vezi toate localitățile →
+                  Toate localitățile →
                 </Link>
               </li>
             </ul>
