@@ -78,4 +78,8 @@ body {
   .section-padding {
     @apply py-20 lg:py-28;
   }
+
+  .label-admin {
+    @apply mb-1.5 block text-[10px] font-semibold uppercase tracking-wider text-text-muted;
+  }
 }
