@@ -28,6 +28,7 @@ const navLinks = [
   { label: "Localități", href: "/localitati" },
   { label: "Despre Noi", href: "/despre-noi" },
   { label: "Întrebări Frecvente", href: "/intrebari-frecvente" },
+  { label: "Blog",      href: "/blog" },
   { label: "Contact",   href: "/contact" },
 ];
 

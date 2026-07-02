@@ -71,9 +71,9 @@ export function Footer() {
             <ul className="space-y-2.5">
               {[
                 { label: "Despre Noi", href: "/despre-noi" },
-                { label: "Echipa", href: "/despre-noi#echipa" },
-                { label: "Cariere", href: "/despre-noi#cariere" },
+                { label: "Blog", href: "/blog" },
                 { label: "Întrebări Frecvente", href: "/intrebari-frecvente" },
+                { label: "Cariere", href: "/despre-noi#cariere" },
               ].map(({ label, href }) => (
                 <li key={label}>
                   <Link

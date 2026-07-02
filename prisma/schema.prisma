@@ -15,6 +15,7 @@ model BlogPost {
   excerpt         String
   content         String   @db.Text
   coverImage      String?
+  category        String   @default("Ghiduri")
   published       Boolean  @default(false)
   metaTitle       String?
   metaDescription String?
@@ -22,6 +23,7 @@ model BlogPost {
   updatedAt       DateTime @updatedAt
 
   @@index([published, createdAt])
+  @@index([category])
 }
 
 model ServiceRequest {
