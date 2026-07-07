@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { StatsBar } from "@/components/sections/StatsBar";
 import { ServicesSection } from "@/components/sections/ServicesSection";
+import { EnergyCertificateTeaser } from "@/components/sections/EnergyCertificateTeaser";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { LocationsTeaserSection } from "@/components/sections/LocationsTeaserSection";
 import { AncpiSection } from "@/components/sections/AncpiSection";
@@ -46,6 +47,7 @@ export default function HomePage() {
       <HeroSection />
       <StatsBar />
       <ServicesSection />
+      <EnergyCertificateTeaser />
       <ProjectsSection />
       <ReviewsSection />
       <LocationsTeaserSection />
