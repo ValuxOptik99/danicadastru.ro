@@ -35,6 +35,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.75,
   }));
 
+  const localCadastruSlugs = [
+    "cadastru-constanta",
+    "cadastru-navodari",
+    "cadastru-eforie",
+    "cadastru-mangalia",
+    "cadastru-limanu",
+    "cadastru-ovidiu",
+    "cadastru-23-august",
+    "cadastru-agigea",
+  ];
+  const localCadastruPages: MetadataRoute.Sitemap = localCadastruSlugs.map((slug) => ({
+    url: `${BASE_URL}/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
   const blogSlugs = await getAllPublishedSlugs();
   const blogPages: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
     url: `${BASE_URL}/blog/${slug}`,
@@ -43,5 +60,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...cityPages, ...blogPages];
+  return [...staticPages, ...cityPages, ...localCadastruPages, ...blogPages];
 }

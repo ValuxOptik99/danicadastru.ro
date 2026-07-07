@@ -1,5 +1,16 @@
 import Link from "next/link";
-import { MapPin, Check, Phone } from "lucide-react";
+import { MapPin, Check, Phone, ArrowRight } from "lucide-react";
+
+const LOCAL_PAGE_SLUGS: Record<string, string> = {
+  "Constanța":  "cadastru-constanta",
+  "Năvodari":   "cadastru-navodari",
+  "Eforie":     "cadastru-eforie",
+  "Mangalia":   "cadastru-mangalia",
+  "Limanu":     "cadastru-limanu",
+  "Ovidiu":     "cadastru-ovidiu",
+  "23 August":  "cadastru-23-august",
+  "Agigea":     "cadastru-agigea",
+};
 import { Button } from "@/components/ui/button";
 import { localitati, clusters } from "@/lib/data/localitati";
 
@@ -123,15 +134,31 @@ export function LocalitatiContent() {
 
           <div className="rounded-2xl border border-[#E5E9F2] bg-white p-6 md:p-8 card-shadow">
             <div className="flex flex-wrap gap-2">
-              {sorted.map((loc) => (
-                <span
-                  key={loc.slug}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[#E5E9F2] px-3 py-1.5 text-sm font-medium text-navy-ink hover:border-brand-cyan/40 hover:bg-brand-cyan/5 transition-colors"
-                >
-                  <MapPin className="h-3 w-3 text-brand-cyan shrink-0" />
-                  {loc.name}
-                </span>
-              ))}
+              {sorted.map((loc) => {
+                const localSlug = LOCAL_PAGE_SLUGS[loc.name];
+                if (localSlug) {
+                  return (
+                    <Link
+                      key={loc.slug}
+                      href={`/${localSlug}`}
+                      className="inline-flex items-center gap-1.5 rounded-full border border-brand-cyan/30 bg-brand-cyan/5 px-3 py-1.5 text-sm font-semibold text-navy-ink hover:border-brand-cyan/60 hover:bg-brand-cyan/10 transition-colors"
+                    >
+                      <MapPin className="h-3 w-3 text-brand-cyan shrink-0" />
+                      {loc.name}
+                      <ArrowRight className="h-3 w-3 text-brand-cyan shrink-0" />
+                    </Link>
+                  );
+                }
+                return (
+                  <span
+                    key={loc.slug}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-[#E5E9F2] px-3 py-1.5 text-sm font-medium text-navy-ink hover:border-brand-cyan/40 hover:bg-brand-cyan/5 transition-colors"
+                  >
+                    <MapPin className="h-3 w-3 text-brand-cyan shrink-0" />
+                    {loc.name}
+                  </span>
+                );
+              })}
             </div>
 
             <p className="mt-6 text-xs text-text-muted border-t border-[#E5E9F2] pt-4">
