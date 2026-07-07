@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -55,7 +55,7 @@ Soluționare alternativă a litigiilor: ANPC — www.anpc.ro (SAL) sau ec.europa
   },
   {
     title: "9. Contact",
-    content: `Pentru orice întrebări legate de acești termeni:\n\nVIBE DESIGN GLOW SRL\nȘos. Constanței nr. 19, Mangalia, jud. Constanța\nCUI 46051134 · J2022001411131\nE-mail: office@danicadastru.ro\nTelefon: 0770 55 66 77`,
+    content: `Pentru orice întrebări legate de acești termeni:\n\nVIBE DESIGN GLOW SRL\nȘos. Constanței nr. 19, Mangalia, jud. Constanța\nCUI 46051134 · J2022001411131\nE-mail: cadastru@danicadastru.ro\nTelefon: 0770 55 66 77`,
   },
 ];
 
@@ -80,8 +80,8 @@ export default function TermeniSiConditii() {
 
         <p className="mt-8 text-center text-xs text-text-muted">
           Întrebări?{" "}
-          <a href="mailto:office@danicadastru.ro" className="text-brand-cyan hover:underline">
-            office@danicadastru.ro
+          <a href="mailto:cadastru@danicadastru.ro" className="text-brand-cyan hover:underline">
+            cadastru@danicadastru.ro
           </a>
         </p>
       </div>

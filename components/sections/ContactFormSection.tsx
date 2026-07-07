@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
@@ -268,13 +268,13 @@ export function ContactFormSection() {
                 </div>
               </a>
 
-              <a href="mailto:office@danicadastru.ro" className="flex items-start gap-3 py-2 transition hover:opacity-90">
+              <a href="mailto:cadastru@danicadastru.ro" className="flex items-start gap-3 py-2 transition hover:opacity-90">
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-pink/15">
                   <Mail className="h-4 w-4 text-brand-pink" />
                 </div>
                 <div>
                   <div className="text-[10px] uppercase tracking-wider text-white/50">Email</div>
-                  <div className="mt-0.5 text-sm font-medium text-white">office@danicadastru.ro</div>
+                  <div className="mt-0.5 text-sm font-medium text-white">cadastru@danicadastru.ro</div>
                 </div>
               </a>
             </div>

@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Image from "next/image";
 import { Facebook, Linkedin, Instagram, MapPin, Phone, Mail } from "lucide-react";
 import { CookieSettingsButton } from "@/components/cookies/CookieSettingsButton";
@@ -42,7 +42,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 flex-shrink-0 text-brand-cyan" />
-                <a href="mailto:office@danicadastru.ro" className="hover:text-white transition-colors">office@danicadastru.ro</a>
+                <a href="mailto:cadastru@danicadastru.ro" className="hover:text-white transition-colors">cadastru@danicadastru.ro</a>
               </li>
             </ul>
             <div className="flex items-center gap-3">

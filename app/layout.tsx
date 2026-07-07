@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -95,7 +95,7 @@ const jsonLd = {
     addressCountry: "RO",
   },
   telephone: "+40770556677",
-  email: "office@danicadastru.ro",
+  email: "cadastru@danicadastru.ro",
   areaServed: [
     { "@type": "AdministrativeArea", name: "Județul Constanța" },
     { "@type": "AdministrativeArea", name: "Dobrogea" },

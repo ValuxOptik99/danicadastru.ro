@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { buildPageMetadata } from "@/lib/seo";
 
@@ -16,7 +16,7 @@ const sections = [
     title: "1. Identitatea operatorului",
     content: `Datele dumneavoastră personale sunt prelucrate de VIBE DESIGN GLOW SRL, cu sediul în Șos. Constanței nr. 19, Mangalia, județul Constanța, înregistrată la Registrul Comerțului cu nr. J2022001411131, CUI 46051134 (denumită în continuare "Compania", "noi").
 
-Contact responsabil date: office@danicadastru.ro | 0770 55 66 77`,
+Contact responsabil date: cadastru@danicadastru.ro | 0770 55 66 77`,
   },
   {
     title: "2. Ce date colectăm",
@@ -75,7 +75,7 @@ Nu vindem datele dvs. unor terți.`,
 • Dreptul de a retrage consimțământul oricând, fără a afecta legalitatea prelucrărilor anterioare
 • Dreptul de a depune plângere la ANSPDCP (www.dataprotection.ro)
 
-Pentru exercitarea drepturilor, scrieți la: office@danicadastru.ro`,
+Pentru exercitarea drepturilor, scrieți la: cadastru@danicadastru.ro`,
   },
   {
     title: "8. Securitatea datelor",
@@ -118,8 +118,8 @@ export default function PoliticaConfidentialitate() {
 
         <p className="mt-8 text-center text-xs text-text-muted">
           Întrebări?{" "}
-          <a href="mailto:office@danicadastru.ro" className="text-brand-cyan hover:underline">
-            office@danicadastru.ro
+          <a href="mailto:cadastru@danicadastru.ro" className="text-brand-cyan hover:underline">
+            cadastru@danicadastru.ro
           </a>
         </p>
       </div>

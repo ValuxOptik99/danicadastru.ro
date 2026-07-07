@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { ContactFormSection } from "@/components/sections/ContactFormSection";
@@ -13,7 +13,7 @@ export const metadata: Metadata = buildPageMetadata({
 
 const contactInfo = [
   { icon: Phone, label: "Telefon", value: "0770 55 66 77", href: "tel:+40770556677" },
-  { icon: Mail, label: "Email", value: "office@danicadastru.ro", href: "mailto:office@danicadastru.ro" },
+  { icon: Mail, label: "Email", value: "cadastru@danicadastru.ro", href: "mailto:cadastru@danicadastru.ro" },
   { icon: MapPin, label: "Sediu", value: "Șos. Constanței nr. 19, Mangalia", href: "#" },
 ];
 
