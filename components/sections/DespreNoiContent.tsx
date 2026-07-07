@@ -383,12 +383,12 @@ export function DespreNoiContent() {
                 },
                 {
                   label: "Activitate",
-                  value: "Din 2016 — 9 ani de experiență",
+                  value: "Din 2016 — strângem experiență și aducem rezultate clienților",
                   color: "text-brand-violet",
                 },
                 {
                   label: "Echipamente",
-                  value: "GPS RTK, Stație Totală, Nivel de Precizie",
+                  value: "GPS RTK, Stație Totală Robotizată, Nivelă de Precizie",
                   color: "text-brand-pink",
                 },
                 {

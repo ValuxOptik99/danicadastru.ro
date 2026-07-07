@@ -92,7 +92,7 @@ export function HeroSection() {
               className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/30 bg-white/5 px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-white backdrop-blur-sm transition hover:bg-white hover:text-navy-ink"
             >
               <WhatsAppIcon className="h-4 w-4" />
-              Trimite Actele pe WhatsApp
+              Scrie-ne pe WhatsApp
             </a>
           </div>
         </motion.div>
