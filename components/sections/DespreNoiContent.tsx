@@ -7,8 +7,8 @@ import {
   Ruler,
   SplitSquareHorizontal,
   Map,
-  Zap,
-  ShieldCheck,
+  BookOpen,
+  Building2,
   CheckCircle2,
   MapPin,
   Phone,
@@ -26,42 +26,42 @@ const fadeUp = {
 const services = [
   {
     Icon: FileText,
-    title: "Cadastru & Intabulare",
-    desc: "Prima înregistrare, actualizare date, apartamentare — de la A la Z, cu depunere și follow-up la OCPI.",
+    title: "Cadastru și intabulare",
+    desc: "Documentații cadastrale pentru apartamente, case și terenuri, cu depunere și follow-up la OCPI.",
   },
   {
-    Icon: Ruler,
-    title: "Topografie Inginerească",
-    desc: "Planuri topografice pentru autorizații de construire, PUZ, PUD, trasări, relevee și recepții finale.",
+    Icon: BookOpen,
+    title: "Prima înscriere în cartea funciară",
+    desc: "Înregistrarea imobilelor care nu au fost niciodată intabulate, inclusiv terenuri și construcții vechi.",
+  },
+  {
+    Icon: Building2,
+    title: "Actualizare construcții",
+    desc: "Actualizarea datelor cadastrale pentru construcții modificate, extinderi sau recepții finale.",
   },
   {
     Icon: SplitSquareHorizontal,
-    title: "Dezmembrări & Alipiri",
+    title: "Dezmembrare și alipire",
     desc: "Divizarea sau comasarea parcelelor cu documentație completă conformă ANCPI.",
   },
   {
     Icon: Map,
-    title: "Planuri PUZ / PUD",
-    desc: "Ridicări topografice de detaliu ca bază cartografică pentru planuri urbanistice zonale și de detaliu.",
+    title: "Ridicări topografice",
+    desc: "Planuri topografice pentru autorizații de construire, PUZ, PUD și proiecte de investiții.",
   },
   {
-    Icon: Zap,
-    title: "Parcuri Fotovoltaice",
-    desc: "Planuri topografice pentru autorizații de construire — terenuri agricole intravilane și extravilane.",
-  },
-  {
-    Icon: ShieldCheck,
-    title: "Consultanță & Due Diligence",
-    desc: "Verificarea situației cadastrale înainte de achiziție — evitați surprizele după semnarea contractului.",
+    Icon: Ruler,
+    title: "Trasări și măsurători",
+    desc: "Trasări în teren, relevee construcții și măsurători de precizie pentru șantiere și proiecte tehnice.",
   },
   {
     Icon: Plane,
-    title: "Drone & Ortofotoplanuri",
-    desc: "Măsurători aeriene cu drone și ortofotoplanuri de înaltă precizie pentru terenuri mari, șantiere și proiecte complexe, la cerere.",
+    title: "Drone și ortofotoplanuri",
+    desc: "Măsurători aeriene și ortofotoplanuri de înaltă precizie pentru terenuri mari și proiecte complexe, la cerere.",
   },
   {
     Icon: FileSearch,
-    title: "Extrase de Carte Funciară",
+    title: "Extrase de carte funciară",
     desc: "Obținem extrase de carte funciară de informare în numele tău, rapid și fără drumuri la OCPI.",
   },
 ];
@@ -69,55 +69,59 @@ const services = [
 const steps = [
   {
     nr: "01",
-    title: "Consultare gratuită",
-    desc: "Ne trimiți actele de proprietate (sau ne spui ce ai). Analizăm situația și estimăm ce lucrare e necesară.",
+    title: "Analizăm concret situația",
+    desc: "Evaluăm situația fiecărei proprietăți sau lucrări în parte.",
   },
   {
     nr: "02",
-    title: "Ofertă clară",
-    desc: "Primești un preț fix, fără costuri ascunse. Știi din start ce plătești și cât durează.",
+    title: "Explicăm clar pașii",
+    desc: "Îți spunem exact ce acte sunt necesare și care sunt pașii de urmat.",
   },
   {
     nr: "03",
-    title: "Deplasare la teren",
-    desc: "Venim la proprietatea ta cu echipamente GPS RTK profesionale. Efectuăm măsurătorile necesare.",
+    title: "Preluăm toată lucrarea",
+    desc: "De la măsurători până la documentația finală, ne ocupăm noi.",
   },
   {
     nr: "04",
-    title: "Întocmirea documentației",
-    desc: "Prelucrăm datele în birou și întocmim documentația conform cerințelor ANCPI și OCPI Constanța.",
+    title: "Soluții pentru fiecare caz",
+    desc: "Căutăm soluții potrivite situației tale, nu variante standard aplicate forțat.",
   },
   {
     nr: "05",
-    title: "Depunere & finalizare",
-    desc: "Depunem documentația la OCPI și urmărim dosarul până la înscrierea în Cartea Funciară.",
+    title: "Lucrăm organizat",
+    desc: "Eviți drumurile inutile, întârzierile și blocajele administrative.",
   },
 ];
 
 const benefits = [
   {
-    title: "Cunoaștere locală profundă",
-    desc: "Cunoaștem specificul fiecărei localități din Dobrogea — de la Mangalia la Năvodari — și relațiile directe cu OCPI Constanța.",
+    title: "Experiență practică din 2016",
+    desc: "Lucrăm constant în cadastru și topografie de la începuturile noastre, cu experiență acumulată pe lucrări diverse.",
   },
   {
-    title: "Documentații acceptate din prima",
-    desc: "100% din documentațiile depuse la ANCPI au primit aviz favorabil. Nu revenim cu cereri de completare.",
+    title: "Aproximativ 3.000 de lucrări realizate",
+    desc: "De la documentații uzuale de intabulare până la proiecte tehnice pentru terenuri, construcții și dezvoltări.",
   },
   {
-    title: "Comunicare transparentă",
-    desc: "Ai un singur interlocutor — inginerul care lucrează la dosarul tău — nu un call center.",
+    title: "Servicii complete într-un singur loc",
+    desc: "Cadastru, intabulare și topografie — de la analiza inițială a situației până la documentația finală.",
   },
   {
-    title: "Fără deplasări inutile",
-    desc: "Preluăm și transmitem documentele electronic ori prin curier. Vii la birou doar dacă e strict necesar.",
+    title: "Suport pentru toate tipurile de lucrări",
+    desc: "Lucrări rezidențiale, comerciale și tehnice — pentru persoane fizice, firme, investitori și șantiere.",
   },
   {
-    title: "Preț fix, fără surprize",
-    desc: "Oferta e fermă. Nicio taxă suplimentară ascunsă în contract.",
+    title: "Abordare clară și serioasă",
+    desc: "Tratăm fiecare dosar cu atenție, explicăm pașii și livrăm documentația completă și corectă.",
   },
   {
-    title: "Experiență cu proiecte mari",
-    desc: "De la apartamente individuale la ansambluri de 186 unități și hoteluri de 5 stele — avem experiența să gestionăm orice scară.",
+    title: "Implicare reală în fiecare dosar",
+    desc: "Nu ne limităm la întocmirea formală — analizăm, verificăm, rezolvăm și comunicăm la fiecare pas.",
+  },
+  {
+    title: "Prezență în județul Constanța și Dobrogea",
+    desc: "Activitate constantă în întreg județul Constanța, în toată Dobrogea și, la cerere, în alte zone.",
   },
 ];
 
@@ -150,12 +154,13 @@ export function DespreNoiContent() {
               className="mb-5 text-4xl font-extrabold text-white md:text-5xl lg:text-6xl"
               style={{ letterSpacing: "-0.02em" }}
             >
-              Experți în cadastru și topografie în inima Dobrogei
+              Servicii complete de cadastru, intabulare și topografie
             </h1>
             <p className="text-white/65 text-lg leading-relaxed max-w-2xl">
-              Autorizați ANCPI clasa A și B, cu peste 3.000 de documentații aprobate
-              din 2016. Cunoaștem fiecare parcelă, fiecare primărie și fiecare birou
-              OCPI din regiune.
+              DANI Cadastru oferă servicii complete pentru persoane fizice, persoane
+              juridice, investitori și dezvoltatori. De la documentații cadastrale pentru
+              apartamente, case și terenuri, până la lucrări tehnice complexe. Experiență
+              din 2016, autorizați ANCPI categoria A și B.
             </p>
           </motion.div>
 
@@ -198,25 +203,23 @@ export function DespreNoiContent() {
                 CINE SUNTEM
               </p>
               <h2 className="mb-5 text-3xl font-extrabold text-navy-ink" style={{ letterSpacing: "-0.02em" }}>
-                O firmă de cadastru construită pe încredere
+                Cine suntem
               </h2>
               <div className="space-y-4 text-text-muted leading-relaxed">
                 <p>
-                  DANI Cadastru este o firmă specializată în cadastru și topografie
-                  inginerească cu sediul în Mangalia, județul Constanța. Înființată în
-                  2016 de ingineri autorizați ANCPI, firma a crescut organic prin
-                  recomandări — fiecare client mulțumit a adus alți clienți.
+                  DANI Cadastru oferă servicii complete de cadastru, intabulare și
+                  topografie pentru persoane fizice, persoane juridice, investitori,
+                  dezvoltatori și proiecte aflate în execuție. Ne ocupăm de documentații
+                  cadastrale pentru apartamente, case, terenuri și construcții, dar și de
+                  lucrări tehnice mai complexe, de la ridicări topografice și trasări în
+                  teren, până la suport pentru șantiere și investiții imobiliare.
                 </p>
                 <p>
-                  De-a lungul anilor ne-am specializat pe nevoile specifice ale
-                  Dobrogei: un teritoriu cu particularități juridice, cu terenuri fără
-                  cadastru de zeci de ani și cu o piață imobiliară în plină expansiune
-                  pe litoral.
-                </p>
-                <p>
-                  Cunoaștem relațiile de lucru cu OCPI Constanța, cu primăriile locale
-                  și cu notarii din zonă — ceea ce înseamnă că documentele tale ajung
-                  la destinație fără întârzieri inutile.
+                  Firma a fost înființată în 2022, însă experiența noastră în domeniu
+                  începe din 2016. În toți acești ani am lucrat constant în cadastru și
+                  topografie, gestionând lucrări diverse, de la documentații uzuale de
+                  intabulare până la proiecte tehnice pentru terenuri, construcții și
+                  dezvoltări. Până în prezent, am realizat aproximativ 3.000 de lucrări.
                 </p>
               </div>
             </motion.div>
@@ -231,9 +234,9 @@ export function DespreNoiContent() {
             >
               {[
                 { value: "3.000+", label: "Lucrări finalizate" },
-                { value: "2016", label: "An înființare" },
+                { value: "2016", label: "Experiență din" },
                 { value: "100%", label: "Conforme ANCPI" },
-                { value: "A & B", label: "Clasă autorizare" },
+                { value: "Cat. A & B", label: "Autorizare ANCPI" },
               ].map(({ value, label }) => (
                 <div
                   key={label}
@@ -264,11 +267,11 @@ export function DespreNoiContent() {
               CE FACEM
             </p>
             <h2 className="text-3xl font-extrabold text-navy-ink" style={{ letterSpacing: "-0.02em" }}>
-              Servicii complete de la A la Z
+              Acoperim tot ce ține de cadastru, intabulare și topografie
             </h2>
             <p className="mt-3 text-text-muted max-w-xl mx-auto">
-              De la prima consultație până la înscrierea în Cartea Funciară — nu
-              externalizam nicio etapă.
+              Astfel încât să poți lucra cu un singur partener, de la analiza inițială a
+              situației până la documentația finală.
             </p>
           </motion.div>
 
@@ -291,6 +294,18 @@ export function DespreNoiContent() {
               </motion.div>
             ))}
           </div>
+
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="mt-10 text-center text-text-muted max-w-2xl mx-auto leading-relaxed"
+          >
+            Ne ocupăm de întreaga lucrare cap-coadă: analizăm situația, verificăm actele
+            disponibile, efectuăm măsurătorile, pregătim documentația și gestionăm pașii
+            necesari pentru ca dosarul să fie complet și corect.
+          </motion.p>
         </div>
       </section>
 
@@ -308,8 +323,13 @@ export function DespreNoiContent() {
               CUM LUCRĂM
             </p>
             <h2 className="text-3xl font-extrabold text-navy-ink" style={{ letterSpacing: "-0.02em" }}>
-              Proces simplu, rezultat garantat
+              Un mod de lucru simplu pentru tine, eficient tehnic
             </h2>
+            <p className="mt-3 text-text-muted max-w-2xl mx-auto leading-relaxed">
+              Nu ne limităm la o simplă măsurătoare sau la întocmirea formală a unui
+              dosar, ci tratăm fiecare lucrare ca pe un proces gestionat corect de la
+              început până la final.
+            </p>
           </motion.div>
 
           <div className="relative">
@@ -357,24 +377,25 @@ export function DespreNoiContent() {
               viewport={{ once: true }}
             >
               <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-brand-cyan">
-                AUTORIZĂRI
+                EXPERIENȚĂ ȘI AUTORIZĂRI
               </p>
               <h2
                 className="mb-5 text-3xl font-extrabold text-white"
                 style={{ letterSpacing: "-0.02em" }}
               >
-                Autorizație ANCPI clasa A și B
+                Experiență și autorizări
               </h2>
               <div className="space-y-4 text-white/65 leading-relaxed">
                 <p>
-                  Deținem autorizație de persoană juridică ANCPI clasa A și B — cel
-                  mai înalt nivel de autorizare, care permite realizarea oricărui tip
-                  de lucrare: de la cadastru general până la topografie industrială,
-                  planuri urbanistice și lucrări de precizie.
+                  Experiența acumulată începând cu 2016 ne ajută să înțelegem rapid tipul
+                  lucrării, dificultățile și soluțiile potrivite. Am lucrat atât pe
+                  documentații uzuale pentru persoane fizice, cât și pe lucrări tehnice,
+                  măsurători pentru terenuri și construcții, și proiecte pentru investitori.
                 </p>
                 <p>
-                  Toate lucrările sunt semnate și ștampilate de ingineri autorizați,
-                  cu răspundere profesională. Nu lucrăm prin subcontractori.
+                  Echipa DANI Cadastru include specialiști autorizați, cu autorizări ANCPI
+                  categoria A și B — ceea ce ne permite să abordăm atât lucrări standard,
+                  cât și proiecte tehnice complexe.
                 </p>
               </div>
             </motion.div>
@@ -395,7 +416,7 @@ export function DespreNoiContent() {
                 },
                 {
                   label: "Activitate",
-                  value: "Din 2016 — strângem experiență și aducem rezultate clienților",
+                  value: "Din 2016 — experiență constantă în cadastru și topografie",
                   color: "text-brand-violet",
                 },
                 {
@@ -404,8 +425,8 @@ export function DespreNoiContent() {
                   color: "text-brand-pink",
                 },
                 {
-                  label: "Rată de succes",
-                  value: "100% documentații aprobate ANCPI",
+                  label: "Lucrări realizate",
+                  value: "Aproximativ 3.000 de lucrări finalizate",
                   color: "text-brand-cyan",
                 },
               ].map(({ label, value, color }) => (
@@ -444,16 +465,13 @@ export function DespreNoiContent() {
                 className="mb-5 text-3xl font-extrabold text-navy-ink"
                 style={{ letterSpacing: "-0.02em" }}
               >
-                Cu rădăcini în Dobrogea, activi în toată țara
+                Unde lucrăm
               </h2>
               <p className="text-text-muted leading-relaxed mb-6">
-                Zona noastră principală de activitate este județul Constanța — cu
-                precădere litoralul și Mangalia. Cunoaștem în detaliu specificul local:
-                tipurile de acte de proprietate, primăriile și OCPI Constanța.
-              </p>
-              <p className="text-text-muted leading-relaxed mb-8">
-                La cererea clienților, realizăm lucrări și în restul țării — am finalizat
-                proiecte în București, Ilfov, Timișoara, Tulcea și alte județe.
+                Deservim clienți din întreg județul Constanța, cu activitate constantă
+                atât în zona Mangaliei și localitățile din jur, cât și în municipiul
+                Constanța și zonele limitrofe. Preluăm lucrări în toată Dobrogea, iar în
+                funcție de proiect, putem interveni și în afara județului, la cerere.
               </p>
               <Button asChild>
                 <Link href="/localitati" className="flex items-center gap-2">
@@ -538,8 +556,13 @@ export function DespreNoiContent() {
               className="text-3xl font-extrabold text-navy-ink"
               style={{ letterSpacing: "-0.02em" }}
             >
-              Ce ne diferențiază
+              De ce să lucrezi cu DANI Cadastru
             </h2>
+            <p className="mt-3 text-text-muted max-w-2xl mx-auto leading-relaxed">
+              Clienții aleg să lucreze cu noi pentru că au nevoie de mai mult decât un
+              simplu prestator — au nevoie de o echipă care înțelege lucrarea, explică
+              clar ce e de făcut și se ocupă de proces până la capăt.
+            </p>
           </motion.div>
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -587,10 +610,13 @@ export function DespreNoiContent() {
               className="mb-4 text-3xl font-extrabold text-white md:text-4xl"
               style={{ letterSpacing: "-0.02em" }}
             >
-              Hai să discutăm despre proprietatea ta
+              Un partener tehnic pentru lucrări făcute corect
             </h2>
-            <p className="mb-8 text-white/60 max-w-lg mx-auto">
-              Consultație gratuită, fără obligații. Îți răspundem în câteva ore.
+            <p className="mb-8 text-white/60 max-w-2xl mx-auto leading-relaxed">
+              Fie că ai nevoie de cadastru și intabulare pentru un apartament, de
+              documentație pentru o casă sau un teren, de ridicări topografice, trasări
+              sau suport pentru șantiere, îți oferim servicii complete și o abordare
+              profesionistă, de la primul contact până la finalizarea documentației.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button asChild size="lg">
