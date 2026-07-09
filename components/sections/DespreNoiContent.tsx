@@ -13,6 +13,8 @@ import {
   MapPin,
   Phone,
   ArrowRight,
+  Plane,
+  FileSearch,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -51,6 +53,16 @@ const services = [
     Icon: ShieldCheck,
     title: "Consultanță & Due Diligence",
     desc: "Verificarea situației cadastrale înainte de achiziție — evitați surprizele după semnarea contractului.",
+  },
+  {
+    Icon: Plane,
+    title: "Drone & Ortofotoplanuri",
+    desc: "Măsurători aeriene cu drone și ortofotoplanuri de înaltă precizie pentru terenuri mari, șantiere și proiecte complexe, la cerere.",
+  },
+  {
+    Icon: FileSearch,
+    title: "Extrase de Carte Funciară",
+    desc: "Obținem extrase de carte funciară de informare în numele tău, rapid și fără drumuri la OCPI.",
   },
 ];
 
@@ -378,7 +390,7 @@ export function DespreNoiContent() {
               {[
                 {
                   label: "Autorizație ANCPI",
-                  value: "Persoană Juridică Clasa A & B",
+                  value: "Autorizare ANCPI — Categoria A și B",
                   color: "text-brand-cyan",
                 },
                 {
