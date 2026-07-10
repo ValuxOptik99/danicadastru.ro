@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { Facebook, Linkedin, Instagram, MapPin, Phone, Mail } from "lucide-react";
 import { CookieSettingsButton } from "@/components/cookies/CookieSettingsButton";
+import { TikTokIcon } from "@/components/shared/TikTokIcon";
 
 const zoneDeservite = [
   "Constanța",
@@ -47,13 +48,16 @@ export function Footer() {
             </ul>
             <div className="flex items-center gap-3">
               {[
-                { icon: Facebook, href: "#", label: "Facebook" },
-                { icon: Linkedin, href: "#", label: "LinkedIn" },
-                { icon: Instagram, href: "#", label: "Instagram" },
+                { icon: Facebook, href: "https://www.facebook.com/cadastrumangalia", label: "Facebook" },
+                { icon: Instagram, href: "https://www.instagram.com/cadastru.constanta", label: "Instagram" },
+                { icon: TikTokIcon, href: "https://www.tiktok.com/@cadastru.constanta", label: "TikTok" },
+                { icon: Linkedin, href: "https://www.linkedin.com/in/daniel-s-96089839b", label: "LinkedIn" },
               ].map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="group flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white/60 hover:border-transparent hover:text-white transition-all duration-200 hover:[background:linear-gradient(135deg,#2563EB_0%,#22D3EE_35%,#8B5CF6_70%,#EC4899_100%)]"
                 >
