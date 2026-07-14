@@ -1,14 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { MapPin } from "lucide-react";
+import { MapPin, ArrowRight } from "lucide-react";
 import { projects } from "@/lib/data/projects";
+import type { Project } from "@/lib/data/projects";
+import { ProjectModal } from "@/components/sections/ProjectModal";
 import { cn } from "@/lib/utils";
 
 type Filter = "all" | "dobrogea" | "national";
 
-const categoryColorMap = {
+const categoryColorMap: Record<string, string> = {
   cyan: "bg-brand-cyan/20 text-brand-cyan border-brand-cyan/30",
   pink: "bg-brand-pink/20 text-brand-pink border-brand-pink/30",
   violet: "bg-brand-violet/20 text-brand-violet border-brand-violet/30",
@@ -22,6 +24,15 @@ const filters: { key: Filter; label: string }[] = [
 
 export function ProiecteGrid() {
   const [filter, setFilter] = useState<Filter>("all");
+  const [selected, setSelected] = useState<Project | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 1024);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   const filtered =
     filter === "all" ? projects : projects.filter((p) => p.region === filter);
@@ -59,7 +70,19 @@ export function ProiecteGrid() {
           {filtered.map((project) => (
             <div
               key={project.id}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-[#E5E9F2] bg-white shadow-[0_4px_24px_rgba(11,20,55,0.06)] transition-all duration-300 hover:shadow-[0_8px_36px_rgba(11,20,55,0.12)] sm:flex-row"
+              onClick={() => { if (isMobile) setSelected(project); }}
+              role={isMobile ? "button" : undefined}
+              tabIndex={isMobile ? 0 : undefined}
+              onKeyDown={(e) => {
+                if (isMobile && (e.key === "Enter" || e.key === " ")) {
+                  e.preventDefault();
+                  setSelected(project);
+                }
+              }}
+              className={cn(
+                "group flex flex-col overflow-hidden rounded-2xl border border-[#E5E9F2] bg-white shadow-[0_4px_24px_rgba(11,20,55,0.06)] transition-all duration-300 hover:shadow-[0_8px_36px_rgba(11,20,55,0.12)] sm:flex-row",
+                isMobile && "cursor-pointer active:scale-[0.99]"
+              )}
             >
               {/* Image — left side */}
               <div className="relative h-52 w-full shrink-0 overflow-hidden sm:h-auto sm:w-[280px] lg:w-[340px]">
@@ -99,14 +122,21 @@ export function ProiecteGrid() {
                   </p>
                 )}
 
-                <p className="mt-3 text-sm leading-relaxed text-text-muted line-clamp-3">
+                <p className="mt-3 text-sm leading-relaxed text-text-muted line-clamp-3 lg:line-clamp-none">
                   {project.description}
                 </p>
+
+                <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-brand-cyan lg:hidden">
+                  Vezi detalii
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </span>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      <ProjectModal project={selected} onClose={() => setSelected(null)} />
     </section>
   );
 }
