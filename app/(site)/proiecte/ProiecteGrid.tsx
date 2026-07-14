@@ -54,23 +54,27 @@ export function ProiecteGrid() {
           })}
         </div>
 
-        {/* Grid */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Cards — horizontal, stacked */}
+        <div className="flex flex-col gap-5">
           {filtered.map((project) => (
             <div
               key={project.id}
-              className="group relative overflow-hidden rounded-2xl aspect-[4/3] shadow-[0_4px_24px_rgba(11,20,55,0.08)]"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-[#E5E9F2] bg-white shadow-[0_4px_24px_rgba(11,20,55,0.06)] transition-all duration-300 hover:shadow-[0_8px_36px_rgba(11,20,55,0.12)] sm:flex-row"
             >
-              <Image
-                src={project.image}
-                alt={`${project.title} — DANI Cadastru`}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-950/88 via-navy-950/25 to-transparent" />
-              <div className="absolute inset-0 flex flex-col justify-end p-5">
-                <div className="flex items-center justify-between mb-2">
+              {/* Image — left side */}
+              <div className="relative h-52 w-full shrink-0 overflow-hidden sm:h-auto sm:w-[280px] lg:w-[340px]">
+                <Image
+                  src={project.image}
+                  alt={`${project.title} — DANI Cadastru`}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, 340px"
+                />
+              </div>
+
+              {/* Content — right side */}
+              <div className="flex flex-1 flex-col justify-center p-6 lg:p-7">
+                <div className="mb-3 flex flex-wrap items-center gap-3">
                   <span
                     className={cn(
                       "inline-flex items-center rounded-full border px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider",
@@ -79,20 +83,23 @@ export function ProiecteGrid() {
                   >
                     {project.category}
                   </span>
-                  <span className="flex items-center gap-1 text-[10px] font-medium text-white/60">
-                    <MapPin className="h-3 w-3" />
+                  <span className="flex items-center gap-1 text-xs font-medium text-text-muted">
+                    <MapPin className="h-3.5 w-3.5 text-brand-cyan" />
                     {project.location}
                   </span>
                 </div>
-                <h3 className="font-bold text-white text-base leading-snug">
+
+                <h3 className="text-lg font-bold leading-snug text-navy-ink lg:text-xl">
                   {project.title}
                 </h3>
+
                 {project.stats && (
-                  <p className="mt-1 text-xs font-semibold text-brand-cyan/90">
+                  <p className="mt-1.5 text-xs font-semibold text-brand-violet">
                     {project.stats}
                   </p>
                 )}
-                <p className="mt-1.5 text-xs text-white/65 line-clamp-2 leading-relaxed">
+
+                <p className="mt-3 text-sm leading-relaxed text-text-muted line-clamp-3">
                   {project.description}
                 </p>
               </div>

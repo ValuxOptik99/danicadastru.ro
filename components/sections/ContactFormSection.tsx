@@ -169,10 +169,18 @@ export function ContactFormSection() {
                       <Select onValueChange={field.onChange} value={field.value}>
                         <SelectTrigger><SelectValue placeholder="Alege serviciul" /></SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="cadastru">Cadastru & Intabulare</SelectItem>
-                          <SelectItem value="topografie">Topografie Inginerească</SelectItem>
-                          <SelectItem value="scanare-3d">Scanare Laser 3D</SelectItem>
-                          <SelectItem value="altul">Altul</SelectItem>
+                          <SelectItem value="cadastru-intabulare">Cadastru și intabulare</SelectItem>
+                          <SelectItem value="prima-inscriere">Prima înscriere în cartea funciară</SelectItem>
+                          <SelectItem value="dezmembrare-alipire">Dezmembrare / Alipire teren</SelectItem>
+                          <SelectItem value="actualizare-cadastrala">Actualizare cadastrală</SelectItem>
+                          <SelectItem value="ridicare-topografica">Ridicare topografică</SelectItem>
+                          <SelectItem value="trasare">Trasare construcție / limite</SelectItem>
+                          <SelectItem value="certificat-edificare">Certificat de edificare</SelectItem>
+                          <SelectItem value="certificat-energetic">Certificat energetic</SelectItem>
+                          <SelectItem value="certificat-urbanism">Certificat de urbanism</SelectItem>
+                          <SelectItem value="due-diligence">Verificare imobil (due diligence)</SelectItem>
+                          <SelectItem value="extras-cf">Extras de carte funciară</SelectItem>
+                          <SelectItem value="altele">Altele / Nu știu sigur</SelectItem>
                         </SelectContent>
                       </Select>
                     )}

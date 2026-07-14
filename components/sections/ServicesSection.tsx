@@ -56,14 +56,7 @@ export function ServicesSection() {
                 className="h-full"
               >
                 <Link href={service.href} className="group block h-full">
-                  <div className="relative flex h-full flex-col rounded-2xl border border-[#E5E9F2] bg-white p-6 card-shadow transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_8px_40px_rgba(11,20,55,0.12)] overflow-hidden">
-                    {/* Hover border gradient */}
-                    <div
-                      className="absolute inset-0 rounded-2xl border-2 border-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      style={{
-                        background: `linear-gradient(white, white) padding-box, linear-gradient(135deg, #2563EB, #22D3EE, #8B5CF6, #EC4899) border-box`,
-                      }}
-                    />
+                  <div className="relative flex h-full flex-col rounded-2xl border-2 border-[#E5E9F2] bg-white p-6 card-shadow transition-all duration-300 group-hover:-translate-y-1 group-hover:border-brand-cyan group-hover:shadow-[0_8px_40px_rgba(11,20,55,0.12)]">
 
                     {/* Icon */}
                     <div className={cn("mb-5 flex h-12 w-12 items-center justify-center rounded-xl", accent.bg)}>
