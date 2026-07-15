@@ -111,3 +111,9 @@ export const clusters: LocalityCluster[] = [
     localities: ["Cernavodă", "Hârșova", "Crucea", "Cogealac", "Istria", "Mihai Viteazu", "Pantelimon", "Saraiu", "Seimeni", "Saligny", "Rasova"],
   },
 ];
+
+export function getLocalityLabel(slug?: string | null): string {
+  if (!slug) return "—";
+  if (slug === "alta-localitate") return "Altă localitate";
+  return localitati.find((l) => l.slug === slug)?.name ?? slug;
+}
