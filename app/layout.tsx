@@ -46,7 +46,7 @@ export const metadata: Metadata = {
       "Servicii profesionale de cadastru, intabulare și topografie în județul Constanța și Dobrogea. Autorizat ANCPI. Răspuns rapid pe WhatsApp.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "DANI Cadastru — Servicii Cadastru și Topografie",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     description: "Servicii profesionale de cadastru, intabulare și topografie. Autorizat ANCPI.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "DANI Cadastru — Cadastru și Topografie",
@@ -87,7 +87,7 @@ const jsonLd = {
     "Servicii profesionale de cadastru, intabulare și topografie în județul Constanța și Dobrogea.",
   url: "https://danicadastru.ro",
   logo: "https://danicadastru.ro/logo/logo_dani.png",
-  image: "https://danicadastru.ro/og-image.jpg",
+  image: "https://danicadastru.ro/images/og-image.jpg",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Șos. Constanței nr. 19",

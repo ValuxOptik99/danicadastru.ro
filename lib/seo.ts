@@ -11,7 +11,7 @@ export function buildPageMetadata({
   title,
   description,
   path,
-  ogImage = "/og-image.jpg",
+  ogImage = "/images/og-image.jpg",
 }: PageMetaInput): Metadata {
   const fullTitle = `${title} | DANI Cadastru`;
 

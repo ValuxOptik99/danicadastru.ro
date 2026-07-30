@@ -13,7 +13,7 @@ export function ArticleSchema(props: ArticleSchemaProps) {
     "@type": "BlogPosting",
     "headline": props.title,
     "description": props.description,
-    "image": props.coverImage || "https://danicadastru.ro/og-image.jpg",
+    "image": props.coverImage || "https://danicadastru.ro/images/og-image.jpg",
     "datePublished": new Date(props.createdAt).toISOString(),
     "dateModified": new Date(props.updatedAt).toISOString(),
     "author": { "@type": "Organization", "name": "DANI Cadastru" },

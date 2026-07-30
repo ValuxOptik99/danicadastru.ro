@@ -5,7 +5,7 @@ export function ReviewSchema() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "DANI Cadastru",
-    "image": "https://danicadastru.ro/og-image.jpg",
+    "image": "https://danicadastru.ro/images/og-image.jpg",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Șos. Constanței nr. 19",
