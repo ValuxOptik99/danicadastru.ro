@@ -1,5 +1,4 @@
 import { MetadataRoute } from "next";
-import { counties } from "@/lib/data/counties";
 import { getAllPublishedSlugs } from "@/lib/blog";
 
 const BASE_URL = "https://danicadastru.ro";
@@ -29,12 +28,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/termeni-si-conditii`, changeFrequency: "yearly", priority: 0.3 },
   ];
 
-  const cityPages: MetadataRoute.Sitemap = counties.map((county) => ({
-    url: `${BASE_URL}/localitati/${county.slug}`,
-    changeFrequency: "monthly",
-    priority: 0.75,
-  }));
-
   const localCadastruSlugs = [
     "cadastru-constanta",
     "cadastru-navodari",
@@ -60,5 +53,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  return [...staticPages, ...cityPages, ...localCadastruPages, ...blogPages];
+  return [...staticPages, ...localCadastruPages, ...blogPages];
 }
