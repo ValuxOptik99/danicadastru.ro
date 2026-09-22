@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useTransition } from "react";
 import { Eye, EyeOff, Trash2 } from "lucide-react";
-import { togglePublish, deletePost } from "./actions";
+import { useArticleActions } from "./useArticleActions";
 
 interface Props {
   id: string;
@@ -11,23 +10,8 @@ interface Props {
 }
 
 export function ArticleRowActions({ id, published, slug }: Props) {
-  const [isPending, startTransition] = useTransition();
-  const [optimisticPublished, setOptimisticPublished] = useState(published);
-
-  function handleToggle() {
-    const next = !optimisticPublished;
-    setOptimisticPublished(next);
-    startTransition(async () => {
-      await togglePublish(id, next);
-    });
-  }
-
-  function handleDelete() {
-    if (!confirm(`Ești sigur că vrei să ștergi "/blog/${slug}"? Acțiunea nu poate fi anulată.`)) return;
-    startTransition(async () => {
-      await deletePost(id);
-    });
-  }
+  const { published: optimisticPublished, handleToggle, handleDelete, isPending } =
+    useArticleActions({ id, slug, published });
 
   return (
     <>

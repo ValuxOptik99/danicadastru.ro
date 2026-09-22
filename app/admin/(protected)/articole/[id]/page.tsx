@@ -13,7 +13,7 @@ export default async function EditArticlePage({
   if (!post) notFound();
 
   return (
-    <div className="p-6 lg:p-8">
+    <div className="p-4 sm:p-6 lg:p-8">
       <h1 className="mb-6 text-2xl font-bold text-navy-ink">
         Editează: <span className="text-text-muted font-normal">{post.title}</span>
       </h1>

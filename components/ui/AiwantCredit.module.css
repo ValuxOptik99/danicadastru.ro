@@ -1,0 +1,268 @@
+/* AiwantCredit — butonul de credit al agenției din footer.
+   Anatomie: pill bleumarin lucios (marcă + text) cu un capăt auriu.
+   Mișcarea e CSS; înclinarea 3D vine din variabilele --tilt-* pe care
+   componenta le scrie la pointermove. Fără --tilt-*, butonul stă drept. */
+
+.root {
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  --lift: 0px;
+  --glare-x: 50%;
+
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+  overflow: hidden;
+  border-radius: 999px;
+  text-decoration: none;
+  background: linear-gradient(180deg, #16305f 0%, #0d1c3c 52%, #070f22 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 -10px 20px rgba(0, 0, 0, 0.4) inset,
+    0 10px 24px rgba(0, 0, 0, 0.55);
+  transform: perspective(620px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) translateY(var(--lift));
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease;
+  isolation: isolate;
+}
+
+.root:hover,
+.root:focus-visible {
+  --lift: -2px;
+  /* tranziție scurtă pe transform ca înclinarea să urmărească fidel cursorul */
+  transition-duration: 0.12s, 0.35s;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.12) inset,
+    0 -10px 20px rgba(0, 0, 0, 0.4) inset,
+    0 14px 30px rgba(0, 0, 0, 0.6),
+    0 0 26px rgba(216, 166, 63, 0.22);
+  will-change: transform;
+}
+
+.root:focus-visible {
+  outline: 2px solid #e8c069;
+  outline-offset: 3px;
+}
+
+/* Marginea permanentă: linie rece pe muchia de sus, ecou slab jos.
+   Asta e ce se vede în repaus — o are și design-ul original. */
+.root::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(
+    180deg,
+    rgba(150, 200, 255, 0.95) 0%,
+    rgba(80, 130, 205, 0.45) 8%,
+    rgba(25, 45, 85, 0.5) 45%,
+    rgba(35, 60, 105, 0.55) 88%,
+    rgba(120, 170, 240, 0.7) 100%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Lumina care călătorește pe margine — doar la hover, peste cea permanentă. */
+.rimSweep {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(
+    100deg,
+    rgba(74, 144, 255, 0) 4%,
+    rgba(74, 144, 255, 0.85) 20%,
+    rgba(173, 210, 255, 0.95) 33%,
+    rgba(247, 227, 165, 0.9) 58%,
+    rgba(216, 166, 63, 0) 78%
+  );
+  background-size: 220% 100%;
+  background-position: 0% 0;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: background-position 1s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.45s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.root:hover .rimSweep,
+.root:focus-visible .rimSweep {
+  opacity: 1;
+  background-position: 100% 0;
+}
+
+/* Luciul care mătură suprafața o singură dată, la intrare. */
+.root::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    104deg,
+    transparent 32%,
+    rgba(255, 255, 255, 0.1) 44%,
+    rgba(255, 255, 255, 0.28) 50%,
+    rgba(255, 255, 255, 0.1) 56%,
+    transparent 68%
+  );
+  transform: translateX(-130%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.root:hover::after,
+.root:focus-visible::after {
+  animation: gloss 0.9s cubic-bezier(0.3, 0, 0.2, 1) forwards;
+}
+
+@keyframes gloss {
+  to {
+    transform: translateX(130%);
+  }
+}
+
+/* Reflexia care urmărește cursorul; intră după ce luciul a trecut. */
+.glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    120px circle at var(--glare-x) 40%,
+    rgba(255, 255, 255, 0.14),
+    transparent 68%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease 0.25s;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.root:hover .glare {
+  opacity: 1;
+}
+
+.body {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 12px 14px 12px 15px;
+}
+
+.mark {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  transition: transform 0.5s cubic-bezier(0.34, 1.3, 0.64, 1);
+}
+
+.root:hover .mark {
+  transform: translateY(-1px) scale(1.08);
+}
+
+.sep {
+  width: 1px;
+  align-self: stretch;
+  margin: 2px 0;
+  background: linear-gradient(
+    180deg,
+    rgba(120, 165, 235, 0),
+    rgba(120, 165, 235, 0.55),
+    rgba(120, 165, 235, 0)
+  );
+}
+
+.label {
+  font-family: var(--font-inter, 'Inter'), system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  color: #eef3ff;
+  white-space: nowrap;
+}
+
+/* Muchia în S dintre bleumarin și auriu. SVG, nu clip-path, fiindcă
+   preserveAspectRatio="none" o întinde pe orice înălțime a butonului. */
+.capEdge {
+  width: 26px;
+  align-self: stretch;
+  flex-shrink: 0;
+  display: block;
+  margin-left: -10px;
+  margin-right: -1px;
+}
+
+.cap {
+  display: flex;
+  align-items: center;
+  padding: 12px 22px 12px 6px;
+  background: linear-gradient(180deg, #f9e9b4 0%, #edc873 40%, #d8a63f 100%);
+  color: #0b1834;
+  font-family: var(--font-space-grotesk, 'Space Grotesk'), system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  transition: filter 0.35s ease;
+}
+
+.root:hover .cap,
+.root:hover .capEdge {
+  filter: brightness(1.08) saturate(1.05);
+}
+
+.capEdge {
+  transition: filter 0.35s ease;
+}
+
+/* ── Varianta pentru fundal deschis ──────────────────────────────
+   Pill-ul rămâne bleumarin (e identitatea AiWant); se schimbă doar
+   umbrele, care pe alb trebuie să fie mai strânse și mai reci. */
+
+.light {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.1) inset,
+    0 -10px 20px rgba(0, 0, 0, 0.35) inset,
+    0 8px 20px rgba(10, 20, 45, 0.2),
+    0 2px 5px rgba(10, 20, 45, 0.14);
+}
+
+.light:hover,
+.light:focus-visible {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.14) inset,
+    0 -10px 20px rgba(0, 0, 0, 0.35) inset,
+    0 12px 26px rgba(10, 20, 45, 0.26),
+    0 0 22px rgba(216, 166, 63, 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root,
+  .rimSweep,
+  .mark,
+  .cap,
+  .capEdge {
+    transition: none;
+  }
+
+  .root {
+    transform: none;
+  }
+
+  .root:hover::after,
+  .root:focus-visible::after {
+    animation: none;
+  }
+
+  .glare,
+  .rimSweep {
+    display: none;
+  }
+}

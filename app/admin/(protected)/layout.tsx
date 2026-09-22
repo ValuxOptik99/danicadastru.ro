@@ -1,15 +1,10 @@
 import { redirect } from "next/navigation";
-import Link from "next/link";
 import Image from "next/image";
-import { LayoutDashboard, FileText, Inbox, LogOut } from "lucide-react";
+import { LogOut } from "lucide-react";
 import { verifySession } from "@/lib/auth";
 import { logout } from "../logout-action";
-
-const navItems = [
-  { href: "/admin",         label: "Dashboard",  Icon: LayoutDashboard },
-  { href: "/admin/articole", label: "Articole",   Icon: FileText },
-  { href: "/admin/cereri",   label: "Cereri",     Icon: Inbox },
-];
+import { AdminNavLinks } from "./AdminNavLinks";
+import { AdminMobileNav } from "./AdminMobileNav";
 
 export default async function AdminLayout({
   children,
@@ -20,9 +15,9 @@ export default async function AdminLayout({
   if (!ok) redirect("/admin/login");
 
   return (
-    <div className="flex min-h-screen bg-[#F0F2F7]">
-      {/* Sidebar */}
-      <aside className="flex w-56 shrink-0 flex-col border-r border-white/10 bg-navy-950">
+    <div className="flex min-h-screen flex-col bg-[#F0F2F7] lg:flex-row">
+      {/* Sidebar — desktop only */}
+      <aside className="hidden w-56 shrink-0 flex-col border-r border-white/10 bg-navy-950 lg:flex">
         <div className="flex h-16 items-center gap-2.5 border-b border-white/10 px-4">
           <Image
             src="/logo/logo_dani.png"
@@ -36,17 +31,8 @@ export default async function AdminLayout({
           </span>
         </div>
 
-        <nav className="flex flex-1 flex-col gap-0.5 p-3">
-          {navItems.map(({ href, label, Icon }) => (
-            <Link
-              key={href}
-              href={href}
-              className="flex items-center gap-2.5 rounded-xl px-3 py-2 text-sm text-white/70 transition hover:bg-white/10 hover:text-white"
-            >
-              <Icon className="h-4 w-4" />
-              {label}
-            </Link>
-          ))}
+        <nav className="flex-1 p-3">
+          <AdminNavLinks variant="sidebar" />
         </nav>
 
         <form action={logout} className="border-t border-white/10 p-3">
@@ -59,6 +45,9 @@ export default async function AdminLayout({
           </button>
         </form>
       </aside>
+
+      {/* Top bar + drawer — mobile/tablet only */}
+      <AdminMobileNav />
 
       {/* Main content */}
       <main className="flex-1 overflow-auto">

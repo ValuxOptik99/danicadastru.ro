@@ -103,7 +103,7 @@ export function ArticleForm({ initial }: { initial?: Partial<PostData> }) {
                   onChange={(e) => { setSlugTouched(true); setSlug(e.target.value); }}
                   placeholder="slug-articol"
                   required
-                  className="font-mono text-xs"
+                  className="font-mono text-base sm:text-xs"
                 />
                 <p className="mt-0.5 text-[10px] text-text-muted">/blog/{slug}</p>
               </div>
@@ -113,7 +113,7 @@ export function ArticleForm({ initial }: { initial?: Partial<PostData> }) {
                 <select
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  className="w-full rounded-xl border border-[#E5E9F2] bg-white px-3 py-2 text-sm text-navy-ink focus:border-brand-cyan focus:outline-none focus:ring-1 focus:ring-brand-cyan"
+                  className="w-full rounded-xl border border-[#E5E9F2] bg-white px-3 py-2 text-base text-navy-ink focus:border-brand-cyan focus:outline-none focus:ring-1 focus:ring-brand-cyan sm:text-sm"
                 >
                   {BLOG_CATEGORIES.map((c) => (
                     <option key={c} value={c}>{c}</option>
@@ -189,7 +189,8 @@ export function ArticleForm({ initial }: { initial?: Partial<PostData> }) {
             </div>
           )}
 
-          <div className="flex gap-3">
+          {/* Save/Cancel — desktop only; mobile uses the sticky bar below */}
+          <div className="hidden gap-3 lg:flex">
             <button
               type="submit"
               disabled={isPending}
@@ -236,7 +237,7 @@ export function ArticleForm({ initial }: { initial?: Partial<PostData> }) {
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 placeholder="Scrie conținutul articolului în Markdown...&#10;&#10;## Titlu secțiune&#10;&#10;Text paragraf cu **bold** și *italic*."
-                className="flex-1 resize-none rounded-2xl border border-[#E5E9F2] bg-white p-4 font-mono text-sm text-navy-ink placeholder:text-text-muted focus:border-brand-cyan focus:outline-none focus:ring-1 focus:ring-brand-cyan min-h-[500px]"
+                className="flex-1 resize-none rounded-2xl border border-[#E5E9F2] bg-white p-4 font-mono text-base text-navy-ink placeholder:text-text-muted focus:border-brand-cyan focus:outline-none focus:ring-1 focus:ring-brand-cyan min-h-[320px] lg:min-h-[500px] lg:text-sm"
               />
             </div>
 
@@ -245,7 +246,7 @@ export function ArticleForm({ initial }: { initial?: Partial<PostData> }) {
               <div className="mb-1.5 text-[10px] font-semibold uppercase tracking-wider text-text-muted">
                 Previzualizare
               </div>
-              <div className="flex-1 overflow-auto rounded-2xl border border-[#E5E9F2] bg-white p-5 min-h-[500px]">
+              <div className="flex-1 overflow-auto rounded-2xl border border-[#E5E9F2] bg-white p-5 min-h-[320px] lg:min-h-[500px]">
                 {content ? (
                   <div className="prose prose-slate max-w-none prose-headings:font-bold prose-headings:text-navy-ink prose-a:text-brand-violet prose-strong:text-navy-ink prose-blockquote:border-l-brand-cyan prose-blockquote:text-text-muted">
                     <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
@@ -259,6 +260,23 @@ export function ArticleForm({ initial }: { initial?: Partial<PostData> }) {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Save/Cancel — sticky bottom bar, mobile only */}
+      <div className="sticky bottom-0 z-10 -mx-4 flex gap-3 border-t border-[#E5E9F2] bg-white px-4 py-3 shadow-[0_-4px_12px_rgba(11,20,55,0.06)] sm:-mx-6 sm:px-6 lg:hidden">
+        <button
+          type="submit"
+          disabled={isPending}
+          className="flex-1 rounded-full bg-brand-cyan py-2.5 text-sm font-semibold text-navy-950 transition hover:brightness-110 disabled:opacity-60"
+        >
+          {isPending ? "Se salvează..." : isEdit ? "Salvează modificările" : "Creează articolul"}
+        </button>
+        <a
+          href="/admin/articole"
+          className="rounded-full border border-[#E5E9F2] bg-white px-4 py-2.5 text-sm font-medium text-navy-ink transition hover:bg-bg-muted"
+        >
+          Anulează
+        </a>
       </div>
     </form>
   );

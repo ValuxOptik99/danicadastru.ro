@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Facebook, Linkedin, Instagram, MapPin, Phone, Mail } from "lucide-react";
 import { CookieSettingsButton } from "@/components/cookies/CookieSettingsButton";
 import { TikTokIcon } from "@/components/shared/TikTokIcon";
+import AiwantCredit from "@/components/ui/AiwantCredit";
 
 const zoneDeservite = [
   "Constanța",
@@ -154,12 +155,13 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-xs text-center md:text-left">
             <p>© 2026 VIBE DESIGN GLOW SRL · CUI 46051134 · J2022001411131</p>
             <p className="text-white/40 mt-0.5">Toate drepturile rezervate. Firmă Acreditată ANCPI.</p>
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs">
+          <AiwantCredit tone="dark" className="order-3 md:order-2" />
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs order-2 md:order-3">
             <Link href="/politica-confidentialitate" className="hover:text-white transition-colors">
               Confidențialitate
             </Link>

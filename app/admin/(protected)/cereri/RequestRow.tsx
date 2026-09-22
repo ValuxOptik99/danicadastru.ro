@@ -1,26 +1,15 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState } from "react";
 import { ChevronDown, ChevronUp, Trash2, Phone, Mail } from "lucide-react";
-import { updateRequestStatus, deleteRequest } from "./actions";
+import { useRequestActions } from "./useRequestActions";
+import type { ServiceRequestData } from "./types";
 
 const STATUS_CLASSES: Record<string, string> = {
   nou: "bg-blue-100 text-blue-700",
   contactat: "bg-amber-100 text-amber-700",
   finalizat: "bg-green-100 text-green-700",
 };
-
-interface ServiceRequest {
-  id: string;
-  name: string;
-  phone: string;
-  email: string;
-  service: string | null;
-  locality: string | null;
-  message: string;
-  status: string;
-  createdAt: Date;
-}
 
 function formatDate(d: Date) {
   return new Intl.DateTimeFormat("ro-RO", {
@@ -32,24 +21,9 @@ function formatDate(d: Date) {
   }).format(new Date(d));
 }
 
-export function RequestRow({ req }: { req: ServiceRequest }) {
+export function RequestRow({ req }: { req: ServiceRequestData }) {
   const [expanded, setExpanded] = useState(false);
-  const [status, setStatus] = useState(req.status);
-  const [isPending, startTransition] = useTransition();
-
-  function handleStatus(newStatus: string) {
-    setStatus(newStatus);
-    startTransition(async () => {
-      await updateRequestStatus(req.id, newStatus);
-    });
-  }
-
-  function handleDelete() {
-    if (!confirm(`Ștergi cererea de la ${req.name}? Acțiunea nu poate fi anulată.`)) return;
-    startTransition(async () => {
-      await deleteRequest(req.id);
-    });
-  }
+  const { status, handleStatus, handleDelete, isPending } = useRequestActions(req);
 
   return (
     <>

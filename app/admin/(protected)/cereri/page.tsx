@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { RequestRow } from "./RequestRow";
+import { RequestCard } from "./RequestCard";
 
 type StatusFilter = "all" | "nou" | "contactat" | "finalizat";
 
@@ -28,8 +29,8 @@ export default async function CereriPage({
   });
 
   return (
-    <div className="p-6 lg:p-8">
-      <div className="mb-6 flex items-center justify-between">
+    <div className="p-4 sm:p-6 lg:p-8">
+      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <h1 className="text-2xl font-bold text-navy-ink">Cereri de servicii</h1>
         <span className="text-sm text-text-muted">{requests.length} înregistrări</span>
       </div>
@@ -57,29 +58,39 @@ export default async function CereriPage({
             Nicio cerere de afișat.
           </p>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-[#E5E9F2] bg-bg-muted">
-                  {["Dată", "Nume", "Telefon", "Email", "Serviciu", "Localitate", "Status", ""].map(
-                    (h) => (
-                      <th
-                        key={h}
-                        className="px-4 py-2.5 text-left text-[10px] font-semibold uppercase tracking-wider text-text-muted last:text-right"
-                      >
-                        {h}
-                      </th>
-                    )
-                  )}
-                </tr>
-              </thead>
-              <tbody>
-                {requests.map((req) => (
-                  <RequestRow key={req.id} req={req} />
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <>
+            {/* Cards — mobile/tablet */}
+            <div className="md:hidden">
+              {requests.map((req) => (
+                <RequestCard key={req.id} req={req} />
+              ))}
+            </div>
+
+            {/* Table — desktop */}
+            <div className="hidden overflow-x-auto md:block">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-[#E5E9F2] bg-bg-muted">
+                    {["Dată", "Nume", "Telefon", "Email", "Serviciu", "Localitate", "Status", ""].map(
+                      (h) => (
+                        <th
+                          key={h}
+                          className="px-4 py-2.5 text-left text-[10px] font-semibold uppercase tracking-wider text-text-muted last:text-right"
+                        >
+                          {h}
+                        </th>
+                      )
+                    )}
+                  </tr>
+                </thead>
+                <tbody>
+                  {requests.map((req) => (
+                    <RequestRow key={req.id} req={req} />
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
         )}
       </div>
     </div>

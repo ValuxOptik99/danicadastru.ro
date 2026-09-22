@@ -1,5 +1,5 @@
 ﻿import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
@@ -8,6 +8,13 @@ const inter = Inter({
   weight: ["400", "500", "600", "700", "800"],
   display: "swap",
   variable: "--font-inter",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["700"],
+  display: "swap",
+  variable: "--font-space-grotesk",
 });
 
 export const metadata: Metadata = {
@@ -139,7 +146,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ro" className={inter.variable}>
+    <html lang="ro" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
         <script
           dangerouslySetInnerHTML={{
