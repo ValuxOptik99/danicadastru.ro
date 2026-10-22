@@ -2,6 +2,7 @@
 import { Inter, Space_Grotesk } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
+import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,7 +19,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://danicadastru.ro"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "DANI Cadastru — Servicii Cadastru, Intabulare și Topografie | Autorizat ANCPI",
     template: "%s | DANI Cadastru",
@@ -40,13 +41,13 @@ export const metadata: Metadata = {
     "Mangalia",
     "Dobrogea",
   ],
-  authors: [{ name: "DANI Cadastru", url: "https://danicadastru.ro" }],
+  authors: [{ name: "DANI Cadastru", url: SITE_URL }],
   creator: "DANI Cadastru",
   publisher: "VIBE DESIGN GLOW SRL",
   openGraph: {
     type: "website",
     locale: "ro_RO",
-    url: "https://danicadastru.ro",
+    url: SITE_URL,
     siteName: "DANI Cadastru",
     title: "DANI Cadastru — Servicii Cadastru, Intabulare și Topografie",
     description:
@@ -92,9 +93,9 @@ const jsonLd = {
   name: "DANI Cadastru",
   description:
     "Servicii profesionale de cadastru, intabulare și topografie în județul Constanța și Dobrogea.",
-  url: "https://danicadastru.ro",
-  logo: "https://danicadastru.ro/logo/logo_dani.png",
-  image: "https://danicadastru.ro/images/og-image.jpg",
+  url: SITE_URL,
+  logo: `${SITE_URL}/logo/logo_dani.png`,
+  image: `${SITE_URL}/images/og-image.jpg`,
   address: {
     "@type": "PostalAddress",
     streetAddress: "Șos. Constanței nr. 19",

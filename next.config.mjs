@@ -9,7 +9,24 @@ const nextConfig = {
     ],
   },
   async redirects() {
+    // Old /localitati/<slug> pages were removed (commit d0bc83d). Send the ones
+    // that now have a dedicated local page there, the rest to the hub.
+    const localPageRedirects = [
+      "constanta", "navodari", "eforie", "mangalia",
+      "limanu", "ovidiu", "23-august", "agigea",
+    ].map((slug) => ({
+      source: `/localitati/${slug}`,
+      destination: `/cadastru-${slug}`,
+      permanent: true,
+    }));
+
     return [
+      ...localPageRedirects,
+      {
+        source: "/localitati/:slug",
+        destination: "/localitati",
+        permanent: true,
+      },
       {
         source: "/servicii/cadastru-intabulare",
         destination: "/servicii/proprietari",

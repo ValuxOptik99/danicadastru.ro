@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/accordion";
 import { CityPin } from "./CityPin";
 import type { LocalPageData } from "@/lib/data/local-pages";
+import { SITE_URL } from "@/lib/site";
 
 const ACCENT_CLASSES = {
   cyan:   { icon: "text-brand-cyan",   bg: "bg-brand-cyan/10",   border: "border-brand-cyan/20"   },
@@ -37,7 +38,7 @@ export function LocalSeoPage({ data }: Props) {
     "@type": "LocalBusiness",
     name: `DANI Cadastru — Cadastru ${data.city}`,
     description: data.metaDescription,
-    url: `https://danicadastru.ro/${data.slug}`,
+    url: `${SITE_URL}/${data.slug}`,
     telephone: "+40770556677",
     email: "cadastru@danicadastru.ro",
     address: {

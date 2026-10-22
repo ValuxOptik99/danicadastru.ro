@@ -1,7 +1,14 @@
 import { MetadataRoute } from "next";
 import { getAllPublishedSlugs } from "@/lib/blog";
+import { localPages } from "@/lib/data/local-pages";
+import { SITE_URL } from "@/lib/site";
 
-const BASE_URL = "https://danicadastru.ro";
+const BASE_URL = SITE_URL;
+
+// Bump when the content of lib/data/local-pages.ts changes. A fixed date is
+// deliberate: `new Date()` on every request tells Google everything changed
+// all the time, and it then ignores lastmod for the whole site.
+const LOCAL_PAGES_UPDATED = "2026-07-07";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [
@@ -28,19 +35,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/termeni-si-conditii`, changeFrequency: "yearly", priority: 0.3 },
   ];
 
-  const localCadastruSlugs = [
-    "cadastru-constanta",
-    "cadastru-navodari",
-    "cadastru-eforie",
-    "cadastru-mangalia",
-    "cadastru-limanu",
-    "cadastru-ovidiu",
-    "cadastru-23-august",
-    "cadastru-agigea",
-  ];
-  const localCadastruPages: MetadataRoute.Sitemap = localCadastruSlugs.map((slug) => ({
+  const localCadastruPages: MetadataRoute.Sitemap = localPages.map(({ slug }) => ({
     url: `${BASE_URL}/${slug}`,
-    lastModified: new Date(),
+    lastModified: LOCAL_PAGES_UPDATED,
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));

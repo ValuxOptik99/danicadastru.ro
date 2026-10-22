@@ -5,12 +5,17 @@ import { CookieSettingsButton } from "@/components/cookies/CookieSettingsButton"
 import { TikTokIcon } from "@/components/shared/TikTokIcon";
 import AiwantCredit from "@/components/ui/AiwantCredit";
 
+// Site-wide links to the local SEO pages — the footer is the strongest
+// internal link source they have, so each city points to its own page.
 const zoneDeservite = [
-  "Constanța",
-  "Mangalia",
-  "Năvodari",
-  "Medgidia",
-  "Eforie",
+  { city: "Constanța", href: "/cadastru-constanta" },
+  { city: "Mangalia", href: "/cadastru-mangalia" },
+  { city: "Năvodari", href: "/cadastru-navodari" },
+  { city: "Eforie", href: "/cadastru-eforie" },
+  { city: "Ovidiu", href: "/cadastru-ovidiu" },
+  { city: "Agigea", href: "/cadastru-agigea" },
+  { city: "Limanu, 2 Mai, Vama Veche", href: "/cadastru-limanu" },
+  { city: "23 August, Olimp", href: "/cadastru-23-august" },
 ];
 
 export function Footer() {
@@ -121,10 +126,10 @@ export function Footer() {
               Zone Deservite
             </h3>
             <ul className="space-y-2.5">
-              {zoneDeservite.map((city) => (
-                <li key={city}>
+              {zoneDeservite.map(({ city, href }) => (
+                <li key={href}>
                   <Link
-                    href="/localitati"
+                    href={href}
                     className="flex items-center gap-2 text-sm hover:text-white transition-colors"
                   >
                     <MapPin className="h-3.5 w-3.5 text-brand-cyan flex-shrink-0" />

@@ -1,3 +1,5 @@
+import { SITE_URL } from "@/lib/site";
+
 interface ArticleSchemaProps {
   title: string;
   description: string;
@@ -13,7 +15,7 @@ export function ArticleSchema(props: ArticleSchemaProps) {
     "@type": "BlogPosting",
     "headline": props.title,
     "description": props.description,
-    "image": props.coverImage || "https://danicadastru.ro/images/og-image.jpg",
+    "image": props.coverImage || `${SITE_URL}/images/og-image.jpg`,
     "datePublished": new Date(props.createdAt).toISOString(),
     "dateModified": new Date(props.updatedAt).toISOString(),
     "author": { "@type": "Organization", "name": "DANI Cadastru" },
@@ -22,12 +24,12 @@ export function ArticleSchema(props: ArticleSchemaProps) {
       "name": "DANI Cadastru",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://danicadastru.ro/logo/logo_dani.png",
+        "url": `${SITE_URL}/logo/logo_dani.png`,
       },
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://danicadastru.ro/blog/${props.slug}`,
+      "@id": `${SITE_URL}/blog/${props.slug}`,
     },
   };
 

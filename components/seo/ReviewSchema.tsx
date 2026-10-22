@@ -1,11 +1,12 @@
 import { googleReviews, REVIEWS_META } from "@/lib/data/reviews";
+import { SITE_URL } from "@/lib/site";
 
 export function ReviewSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "DANI Cadastru",
-    "image": "https://danicadastru.ro/images/og-image.jpg",
+    "image": `${SITE_URL}/images/og-image.jpg`,
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Șos. Constanței nr. 19",
